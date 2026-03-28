@@ -14,11 +14,13 @@ type ResendSendResponse = {
 type Env = {
   RESEND_API_KEY?: string;
   CONTACT_FROM_EMAIL?: string;
+  CONTACT_FROM_NAME?: string;
   CONTACT_TO_EMAIL?: string;
 };
 
 const RESEND_API_URL = "https://api.resend.com/emails";
 const FALLBACK_FROM = "Portfolio Contact <onboarding@resend.dev>";
+const DEFAULT_FROM_NAME = "Yigit Serezli";
 
 function jsonResponse(status: number, body: Record<string, unknown>) {
   return new Response(JSON.stringify(body), {
@@ -36,6 +38,21 @@ function escapeHtml(value: string) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
+}
+
+function formatFromHeader(fromEmailOrHeader: string, fromName?: string) {
+  const safeValue = fromEmailOrHeader.trim();
+  if (!safeValue) {
+    return FALLBACK_FROM;
+  }
+
+  // If user already provided a full RFC-5322 style header, keep it as-is.
+  if (safeValue.includes("<") && safeValue.includes(">")) {
+    return safeValue;
+  }
+
+  const displayName = (fromName?.trim() || DEFAULT_FROM_NAME).replaceAll('"', "");
+  return `${displayName} <${safeValue}>`;
 }
 
 async function sendViaResend(input: {
@@ -83,6 +100,14 @@ function ownerTemplate(payload: { name: string; email: string; message: string }
         <h1 style="margin:0;font-family:Manrope,Inter,Arial,sans-serif;font-size:38px;line-height:1;color:#ffffff;">Incoming Contact Signal</h1>
       </div>
       <div style="padding:24px;">
+        <div style="margin-bottom:18px;padding:14px;border:1px solid #474747;background:#121212;">
+          <p style="margin:0 0 6px 0;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#ffffff;">TR</p>
+          <p style="margin:0;color:#c8c6c5;">Portfolyo iletişim formundan yeni bir mesaj alındı. Detaylar aşağıdadır.</p>
+        </div>
+        <div style="margin-bottom:18px;padding:14px;border:1px solid #474747;background:#121212;">
+          <p style="margin:0 0 6px 0;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#ffffff;">EN</p>
+          <p style="margin:0;color:#c8c6c5;">A new message has been received from the portfolio contact form. Details are below.</p>
+        </div>
         <div style="margin-bottom:18px;">
           <p style="margin:0 0 6px 0;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#919191;">Sender Identity</p>
           <p style="margin:0;font-size:18px;color:#ffffff;">${safeName}</p>
@@ -114,9 +139,15 @@ function thankYouTemplate(payload: { name: string }) {
         <h1 style="margin:0;font-family:Manrope,Inter,Arial,sans-serif;font-size:36px;line-height:1;color:#ffffff;">Signal Received</h1>
       </div>
       <div style="padding:24px;">
+        <p style="margin:0 0 12px 0;font-size:17px;color:#ffffff;">Merhaba ${safeName},</p>
+        <p style="margin:0 0 10px 0;color:#c8c6c5;">Mesajın başarıyla alındı ve aktif iletişim kuyruğuna eklendi.</p>
+        <p style="margin:0 0 14px 0;color:#c8c6c5;">Sinyal yoğunluğuna bağlı olarak 24-48 saat içinde yanıt vereceğim.</p>
+
+        <hr style="border:none;border-top:1px solid #353534;margin:14px 0;" />
+
         <p style="margin:0 0 12px 0;font-size:17px;color:#ffffff;">Hi ${safeName},</p>
-        <p style="margin:0 0 12px 0;color:#c8c6c5;">Thanks for reaching out. Your message is now in the active communication queue.</p>
-        <p style="margin:0 0 12px 0;color:#c8c6c5;">A response will be shared within 24-48 standard operation cycles, depending on signal density.</p>
+        <p style="margin:0 0 10px 0;color:#c8c6c5;">Thanks for reaching out. Your message has been received and added to the active communication queue.</p>
+        <p style="margin:0 0 12px 0;color:#c8c6c5;">A response will be shared within 24-48 hours depending on current signal density.</p>
         <div style="margin-top:18px;padding:14px;border:1px solid #474747;background:#131313;">
           <p style="margin:0;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#adabaa;">Status</p>
           <p style="margin:6px 0 0 0;color:#ffffff;font-size:14px;">Packet accepted • Queue initialized • Monitoring enabled</p>
@@ -150,7 +181,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
     return jsonResponse(400, { error: "Name, email and message are required" });
   }
 
-  const from = context.env.CONTACT_FROM_EMAIL || FALLBACK_FROM;
+  const from = formatFromHeader(context.env.CONTACT_FROM_EMAIL || FALLBACK_FROM, context.env.CONTACT_FROM_NAME);
   const ownerEmail = context.env.CONTACT_TO_EMAIL || "devserezli@gmail.com";
 
   try {

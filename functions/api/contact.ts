@@ -61,6 +61,7 @@ async function sendViaResend(input: {
   to: string;
   subject: string;
   html: string;
+  text: string;
   replyTo?: string;
 }) {
   const response = await fetch(RESEND_API_URL, {
@@ -74,6 +75,7 @@ async function sendViaResend(input: {
       to: [input.to],
       subject: input.subject,
       html: input.html,
+      text: input.text,
       reply_to: input.replyTo,
     }),
   });
@@ -100,14 +102,8 @@ function ownerTemplate(payload: { name: string; email: string; message: string }
         <h1 style="margin:0;font-family:Manrope,Inter,Arial,sans-serif;font-size:38px;line-height:1;color:#ffffff;">Incoming Contact Signal</h1>
       </div>
       <div style="padding:24px;">
-        <div style="margin-bottom:18px;padding:14px;border:1px solid #474747;background:#121212;">
-          <p style="margin:0 0 6px 0;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#ffffff;">TR</p>
-          <p style="margin:0;color:#c8c6c5;">Portfolyo iletişim formundan yeni bir mesaj alındı. Detaylar aşağıdadır.</p>
-        </div>
-        <div style="margin-bottom:18px;padding:14px;border:1px solid #474747;background:#121212;">
-          <p style="margin:0 0 6px 0;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#ffffff;">EN</p>
-          <p style="margin:0;color:#c8c6c5;">A new message has been received from the portfolio contact form. Details are below.</p>
-        </div>
+        <p style="margin:0 0 3px 0;font-size:16px;line-height:1.45;color:#ffffff;font-weight:700;">Portfolyo iletisim formundan yeni bir mesaj alindi.</p>
+        <p style="margin:0 0 20px 0;font-size:12px;line-height:1.55;color:#7f7f7f;">A new message has been received from the portfolio contact form.</p>
         <div style="margin-bottom:18px;">
           <p style="margin:0 0 6px 0;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#919191;">Sender Identity</p>
           <p style="margin:0;font-size:18px;color:#ffffff;">${safeName}</p>
@@ -128,6 +124,26 @@ function ownerTemplate(payload: { name: string; email: string; message: string }
   </div>`;
 }
 
+function ownerTextTemplate(payload: { name: string; email: string; message: string }) {
+  return [
+    "TR",
+    "Portfolyo iletisim formundan yeni bir mesaj alindi.",
+    "",
+    `Gonderen: ${payload.name}`,
+    `E-posta: ${payload.email}`,
+    "Mesaj:",
+    payload.message,
+    "",
+    "EN",
+    "A new message has been received from the portfolio contact form.",
+    "",
+    `Sender: ${payload.name}`,
+    `Email: ${payload.email}`,
+    "Message:",
+    payload.message,
+  ].join("\n");
+}
+
 function thankYouTemplate(payload: { name: string }) {
   const safeName = escapeHtml(payload.name);
 
@@ -140,14 +156,11 @@ function thankYouTemplate(payload: { name: string }) {
       </div>
       <div style="padding:24px;">
         <p style="margin:0 0 12px 0;font-size:17px;color:#ffffff;">Merhaba ${safeName},</p>
-        <p style="margin:0 0 10px 0;color:#c8c6c5;">Mesajın başarıyla alındı ve aktif iletişim kuyruğuna eklendi.</p>
-        <p style="margin:0 0 14px 0;color:#c8c6c5;">Sinyal yoğunluğuna bağlı olarak 24-48 saat içinde yanıt vereceğim.</p>
+        <p style="margin:0 0 3px 0;font-size:16px;line-height:1.45;color:#ffffff;font-weight:700;">Mesajin alindi ve aktif iletisim kuyruguna eklendi.</p>
+        <p style="margin:0 0 15px 0;font-size:12px;line-height:1.55;color:#7f7f7f;">Your message has been received and added to the active communication queue.</p>
 
-        <hr style="border:none;border-top:1px solid #353534;margin:14px 0;" />
-
-        <p style="margin:0 0 12px 0;font-size:17px;color:#ffffff;">Hi ${safeName},</p>
-        <p style="margin:0 0 10px 0;color:#c8c6c5;">Thanks for reaching out. Your message has been received and added to the active communication queue.</p>
-        <p style="margin:0 0 12px 0;color:#c8c6c5;">A response will be shared within 24-48 hours depending on current signal density.</p>
+        <p style="margin:0 0 3px 0;font-size:16px;line-height:1.45;color:#ffffff;font-weight:700;">Sinyal yogunluguna bagli olarak 24-48 saat icinde yanit verecegim.</p>
+        <p style="margin:0 0 12px 0;font-size:12px;line-height:1.55;color:#7f7f7f;">I will get back to you within 24-48 hours depending on current signal density.</p>
         <div style="margin-top:18px;padding:14px;border:1px solid #474747;background:#131313;">
           <p style="margin:0;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#adabaa;">Status</p>
           <p style="margin:6px 0 0 0;color:#ffffff;font-size:14px;">Packet accepted • Queue initialized • Monitoring enabled</p>
@@ -158,6 +171,20 @@ function thankYouTemplate(payload: { name: string }) {
       </div>
     </div>
   </div>`;
+}
+
+function thankYouTextTemplate(payload: { name: string }) {
+  return [
+    `Merhaba ${payload.name},`,
+    "",
+    "Mesajin alindi ve aktif iletisim kuyruguna eklendi.",
+    "24-48 saat icinde donus yapacagim.",
+    "",
+    `Hi ${payload.name},`,
+    "",
+    "Your message has been received and added to the active communication queue.",
+    "I will get back to you within 24-48 hours.",
+  ].join("\n");
 }
 
 export const onRequestPost = async (context: { request: Request; env: Env }) => {
@@ -189,8 +216,9 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       apiKey,
       from,
       to: ownerEmail,
-      subject: `Contact Flow | ${name}`,
+      subject: `New contact form message | ${name}`,
       html: ownerTemplate({ name, email, message }),
+      text: ownerTextTemplate({ name, email, message }),
       replyTo: email,
     });
 
@@ -198,8 +226,9 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       apiKey,
       from,
       to: email,
-      subject: "Signal received | Thank you for reaching out",
+      subject: "Thanks for your message | Mesajiniz alindi",
       html: thankYouTemplate({ name }),
+      text: thankYouTextTemplate({ name }),
     });
 
     return jsonResponse(200, { ok: true });

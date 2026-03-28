@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Download, Linkedin, Github } from "lucide-react";
+import { Mail, Linkedin, Github } from "lucide-react";
 
 export default function LetsWorkTogether() {
     return (
@@ -27,13 +27,6 @@ export default function LetsWorkTogether() {
                         className="inline-flex items-center gap-2 px-6 py-3 border border-white/20 text-white font-medium rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm transition"
                     >
                         <Mail className="w-4 h-4" /> Email Me
-                    </a>
-                    <a
-                        href="/resume.pdf"
-                        download
-                        className="inline-flex items-center gap-2 px-6 py-3 border border-white/20 text-white font-medium rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm transition"
-                    >
-                        <Download className="w-4 h-4" /> Download CV
                     </a>
                 </div>
 

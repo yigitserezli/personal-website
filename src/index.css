@@ -1,6 +1,89 @@
 @import "tailwindcss";
 
+/* Technical Monolith design tokens */
+:root {
+  --tm-primary: #ffffff;
+  --tm-on-primary: #1a1c1c;
+  --tm-secondary: #c8c6c5;
+  --tm-background: #131313;
+  --tm-surface: #131313;
+  --tm-surface-container-lowest: #0e0e0e;
+  --tm-surface-container-low: #1c1b1b;
+  --tm-surface-container: #201f1f;
+  --tm-surface-container-high: #2a2a2a;
+  --tm-surface-container-highest: #353534;
+  --tm-on-surface: #e5e2e1;
+  --tm-on-surface-variant: #c6c6c6;
+  --tm-outline: #919191;
+  --tm-outline-variant: #474747;
+  --tm-motion-fast: 150ms;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-    font-family: 'Ubuntu', sans-serif;
-  }
-  
+  margin: 0;
+  color: var(--tm-on-surface);
+  font-family: 'Inter', sans-serif;
+  background-color: var(--tm-background);
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08) 0%, rgba(19, 19, 19, 1) 70%),
+    radial-gradient(circle at 1px 1px, rgba(71, 71, 71, 0.18) 1px, transparent 0);
+  background-size: 100% 100%, 32px 32px;
+  background-attachment: fixed;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-family: 'Manrope', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+code,
+pre,
+.font-technical {
+  font-family: 'Space Grotesk', monospace;
+}
+
+.font-newsreader {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+}
+
+.tm-dot-grid {
+  background-image: radial-gradient(circle, var(--tm-outline-variant) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.tm-radial-monolith {
+  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08) 0%, rgba(19, 19, 19, 1) 70%);
+}
+
+.tm-cinematic-vignette {
+  background:
+    radial-gradient(ellipse at center, rgba(19, 19, 19, 0) 28%, rgba(0, 0, 0, 0.38) 78%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.05) 24%, rgba(0, 0, 0, 0.35) 100%);
+}
+
+.tm-text-glow {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+}
+
+.tm-blueprint-line-h {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--tm-outline-variant), transparent);
+}
+
+.tm-blueprint-line-v {
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, var(--tm-outline-variant), transparent);
+}

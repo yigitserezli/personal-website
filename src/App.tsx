@@ -1,25 +1,21 @@
-import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Landing from "./pages/Landing";
+import ProjectsShowcase from "./pages/ProjectsShowcase";
+import Contact from "./pages/Contact";
+import About from "./pages/About";
+import MainLayout from "./layouts/MainLayout";
 
 export default function App() {
-    const [isScrolled, setIsScrolled] = useState(false);
-
-    useEffect(() => {
-        const handleScroll = () => {
-          setIsScrolled(window.scrollY > 20);
-        };
-
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
-
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<Landing />} />
-                <Route path="/home" element={<Home isScrolled={isScrolled} />} />
+                <Route element={<MainLayout />}>
+                    <Route path="/" element={<Landing />} />
+                    <Route path="/projects" element={<ProjectsShowcase />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/contact" element={<Contact />} />
+                </Route>
+                <Route path="/home" element={<Navigate to="/" replace />} />
             </Routes>
         </Router>
     );

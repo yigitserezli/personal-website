@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=Manrope:wght@700;800&amp;family=Space+Grotesk:wght@400;500&amp;family=Newsreader:ital,wght@1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-fixed": "#5d5f5f",
+              "on-secondary-container": "#e5e2e1",
+              "on-error": "#690005",
+              "error-container": "#93000a",
+              "tertiary-container": "#919191",
+              "primary-fixed-dim": "#454747",
+              "surface": "#131313",
+              "on-secondary": "#1c1b1b",
+              "inverse-on-surface": "#313030",
+              "secondary-fixed": "#c8c6c5",
+              "surface-container-high": "#2a2a2a",
+              "outline": "#919191",
+              "surface-container-highest": "#353534",
+              "on-primary-container": "#000000",
+              "secondary-container": "#474746",
+              "on-background": "#e5e2e1",
+              "tertiary-fixed-dim": "#474747",
+              "on-secondary-fixed": "#1c1b1b",
+              "primary": "#ffffff",
+              "background": "#131313",
+              "tertiary-fixed": "#5e5e5e",
+              "on-primary-fixed": "#ffffff",
+              "surface-bright": "#3a3939",
+              "on-tertiary-fixed": "#ffffff",
+              "surface-variant": "#353534",
+              "tertiary": "#e2e2e2",
+              "on-tertiary": "#1b1b1b",
+              "on-surface-variant": "#c6c6c6",
+              "secondary": "#c8c6c5",
+              "inverse-surface": "#e5e2e1",
+              "on-tertiary-container": "#000000",
+              "outline-variant": "#474747",
+              "on-primary-fixed-variant": "#e2e2e2",
+              "surface-container-low": "#1c1b1b",
+              "on-surface": "#e5e2e1",
+              "error": "#ffb4ab",
+              "on-error-container": "#ffdad6",
+              "on-primary": "#1a1c1c",
+              "on-tertiary-fixed-variant": "#e2e2e2",
+              "secondary-fixed-dim": "#adabaa",
+              "inverse-primary": "#5d5f5f",
+              "surface-container-lowest": "#0e0e0e",
+              "surface-tint": "#c6c6c7",
+              "surface-dim": "#131313",
+              "primary-container": "#d4d4d4",
+              "surface-container": "#201f1f",
+              "on-secondary-fixed-variant": "#3c3b3b"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Space Grotesk"]
+            },
+            borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .dot-grid {
+            background-image: radial-gradient(circle, #474747 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        .radial-monolith {
+            background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08) 0%, rgba(19, 19, 19, 1) 70%);
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+        }
+        .blueprint-line-h {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #474747, transparent);
+        }
+        .blueprint-line-v {
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(180deg, transparent, #474747, transparent);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary overflow-x-hidden">
+<!-- Header / Navigation Shell -->
+<nav class="fixed top-0 w-full z-50 rounded-none bg-[#131313]/60 backdrop-blur-xl no-border transition-colors flex justify-between items-center px-12 py-6 max-w-none shadow-none">
+<div class="flex items-center gap-2">
+<span class="text-white font-['Newsreader'] italic text-2xl uppercase tracking-tighter">Technical Monolith</span>
+</div>
+<div class="hidden md:flex items-center gap-12">
+<a class="font-['Manrope'] text-sm tracking-widest uppercase transition-all duration-300 text-white font-bold border-b-0" href="#">Projects</a>
+<a class="font-['Manrope'] text-sm tracking-widest uppercase transition-all duration-300 text-[#C6C6C6] hover:text-white" href="#">About</a>
+<a class="font-['Manrope'] text-sm tracking-widest uppercase transition-all duration-300 text-[#C6C6C6] hover:text-white" href="#">Contact</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 font-['Manrope'] text-xs uppercase tracking-widest font-bold hover:bg-secondary transition-all duration-200 scale-95 hover:scale-100">
+            Download CV
+        </button>
+</nav>
+<!-- Main Content Canvas -->
+<main class="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+<!-- Background Textures -->
+<div class="absolute inset-0 dot-grid opacity-20 pointer-events-none"></div>
+<div class="absolute inset-0 radial-monolith pointer-events-none"></div>
+<!-- Blueprint Lines (Asymmetric Layout Elements) -->
+<div class="absolute top-1/4 left-0 blueprint-line-h opacity-30"></div>
+<div class="absolute bottom-1/4 right-0 blueprint-line-h opacity-30"></div>
+<div class="absolute left-1/4 top-0 blueprint-line-v opacity-30"></div>
+<div class="absolute right-1/4 bottom-0 blueprint-line-v opacity-30"></div>
+<!-- Hero Section -->
+<section class="relative z-10 flex flex-col items-center text-center px-6 max-w-6xl">
+<!-- Breadcrumb / Status -->
+<div class="mb-8 flex items-center gap-3">
+<span class="w-2 h-2 bg-primary animate-pulse"></span>
+<span class="font-label text-xs uppercase tracking-[0.3em] text-on-surface-variant">System.init(YigitSerezli.portfolio)</span>
+</div>
+<!-- Massive Headline -->
+<h1 class="font-headline text-5xl md:text-8xl lg:text-[9rem] leading-[0.9] font-extrabold tracking-tighter text-white mb-8 text-glow">
+                BUILDING HIGH-PERFORMANCE<br/>
+<span class="bg-gradient-to-r from-white via-secondary to-outline-variant bg-clip-text text-transparent">ARCHITECTURES</span>
+</h1>
+<!-- Subtitle -->
+<p class="font-label text-sm md:text-lg uppercase tracking-[0.4em] text-on-surface-variant mb-12 flex flex-wrap justify-center gap-x-6 gap-y-2">
+<span>React</span>
+<span class="text-outline-variant">/</span>
+<span>React Native</span>
+<span class="text-outline-variant">/</span>
+<span>NodeJS</span>
+<span class="text-outline-variant">/</span>
+<span>Full-Stack Engineer</span>
+</p>
+<!-- CTA Cluster -->
+<div class="flex flex-col md:flex-row items-center gap-6">
+<button class="group relative px-10 py-5 bg-primary text-on-primary font-headline font-bold uppercase tracking-widest text-sm overflow-hidden transition-all duration-300 hover:bg-secondary">
+<span class="relative z-10 flex items-center gap-3">
+                        Explore Systems
+                        <span class="material-symbols-outlined text-sm translate-y-[1px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</span>
+</button>
+<button class="px-10 py-5 border border-outline-variant text-white font-label uppercase tracking-[0.2em] text-xs hover:border-primary transition-colors">
+                    View Documentation
+                </button>
+</div>
+</section>
+<!-- Technical Metadata Sidebar (Decorative) -->
+<div class="hidden xl:block absolute right-12 top-1/2 -translate-y-1/2 vertical-text">
+<div class="flex flex-col gap-12 font-label text-[10px] uppercase tracking-[0.5em] text-outline-variant">
+<p>Lat: 41.0082° N / Lon: 28.9784° E</p>
+<p>Status: Active_Deployment</p>
+<p>Uptime: 99.998%</p>
+</div>
+</div>
+<!-- Scroll Indicator -->
+<div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4">
+<span class="font-label text-[10px] uppercase tracking-[0.3em] text-on-surface-variant">Scroll for Details</span>
+<div class="w-[1px] h-16 bg-gradient-to-b from-primary via-outline-variant to-transparent"></div>
+</div>
+</main>
+<!-- Project Preview Section (Bento Style) -->
+<section class="bg-surface-container-lowest py-32 px-12 border-t border-outline-variant">
+<div class="max-w-7xl mx-auto">
+<div class="mb-20 flex justify-between items-end border-b border-outline-variant pb-8">
+<div>
+<h2 class="font-headline text-4xl font-bold text-white mb-2 uppercase tracking-tight">Active Repositories</h2>
+<p class="font-label text-sm text-on-surface-variant tracking-widest uppercase">Production Ready Micro-services</p>
+</div>
+<div class="font-label text-xs text-outline-variant uppercase tracking-widest mb-1">
+                    Showing 3 of 12 projects
+                </div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Large Card -->
+<div class="md:col-span-8 group border border-outline-variant p-8 bg-surface transition-all duration-300 hover:bg-surface-container-low relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 font-label text-[10px] text-outline-variant opacity-40 uppercase">0x001</div>
+<h3 class="font-headline text-2xl font-bold text-white mb-4">Core-Infrastructure.v2</h3>
+<p class="font-body text-on-surface-variant text-sm mb-8 max-w-md">Scalable orchestration layer for distributed systems, utilizing zero-latency synchronization patterns across multiple edge nodes.</p>
+<div class="flex gap-4">
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface font-label text-[10px] uppercase tracking-wider">Kubernetes</span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface font-label text-[10px] uppercase tracking-wider">gRPC</span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface font-label text-[10px] uppercase tracking-wider">Go</span>
+</div>
+<div class="mt-12 overflow-hidden h-48 border border-outline-variant">
+<img class="w-full h-full object-cover grayscale opacity-50 group-hover:scale-105 transition-transform duration-700" data-alt="Technical server rack close-up with glowing blue and white fiber optic cables and brushed metal textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQMTe5gFaXRgzlDdWfB905vv6Gu9dWonzaderhGKJd4qVca2hwXBzpOXqvSETr7TwWZJwLQfSnWwFrsCIVSKN7s2UhOONr0YuuLSjgeV8yuPM6TB4wyO7tGI1-ozMhAZkyfIPjbStSF9VcWMHdBhEquyKdTvjMwlulhHsRzz_5-hHlvOkktcwbDhR8P82c2UAQ1WId2hUeOv7_FPAEFyJx4lkTabpzccmTbtF-9Vg_w0W3JSvmbAYifCQrWTcT0WFp-gkb8mFOkA"/>
+</div>
+</div>
+<!-- Side Card Stack -->
+<div class="md:col-span-4 flex flex-col gap-8">
+<div class="flex-1 border border-outline-variant p-6 bg-surface hover:bg-surface-container-low transition-colors group">
+<h4 class="font-headline text-lg font-bold text-white mb-2 uppercase">Neural-Sync</h4>
+<p class="font-body text-xs text-on-surface-variant mb-4">Real-time data synchronization engine for React Native mobile applications.</p>
+<div class="w-full h-1 bg-outline-variant mb-4">
+<div class="w-3/4 h-full bg-primary"></div>
+</div>
+<span class="font-label text-[10px] text-primary uppercase tracking-tighter cursor-pointer group-hover:translate-x-1 inline-block transition-transform">&gt; View Source</span>
+</div>
+<div class="flex-1 border border-outline-variant p-6 bg-surface hover:bg-surface-container-low transition-colors group">
+<h4 class="font-headline text-lg font-bold text-white mb-2 uppercase">Prism-Auth</h4>
+<p class="font-body text-xs text-on-surface-variant mb-4">Zero-trust authentication protocol with biometrically backed identity verification.</p>
+<span class="font-label text-[10px] text-primary uppercase tracking-tighter cursor-pointer group-hover:translate-x-1 inline-block transition-transform">&gt; View Source</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer Shell -->
+<footer class="bg-[#131313] w-full border-t-0 bg-surface-container-lowest py-20 px-12 flex flex-col md:flex-row justify-between items-center flat no shadows">
+<div class="mb-8 md:mb-0 text-center md:text-left">
+<span class="text-white font-serif italic text-xl">Technical Monolith</span>
+<p class="mt-4 font-['Manrope'] text-xs uppercase tracking-widest text-[#C6C6C6]">© 2024 Technical Monolith. All rights reserved.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-['Manrope'] text-xs uppercase tracking-widest text-[#C6C6C6] hover:text-white underline decoration-1 underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">github</a>
+<a class="font-['Manrope'] text-xs uppercase tracking-widest text-[#C6C6C6] hover:text-white underline decoration-1 underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">terminal</a>
+<a class="font-['Manrope'] text-xs uppercase tracking-widest text-[#C6C6C6] hover:text-white underline decoration-1 underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">linkedin</a>
+</div>
+</footer>
+</body></html>

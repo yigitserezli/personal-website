@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@700;800&amp;family=Space+Grotesk:wght@400;500;700&amp;family=Newsreader:ital,wght@1,400;1,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-fixed": "#5d5f5f",
+              "on-secondary-container": "#e5e2e1",
+              "on-error": "#690005",
+              "error-container": "#93000a",
+              "tertiary-container": "#919191",
+              "primary-fixed-dim": "#454747",
+              "surface": "#131313",
+              "on-secondary": "#1c1b1b",
+              "inverse-on-surface": "#313030",
+              "secondary-fixed": "#c8c6c5",
+              "surface-container-high": "#2a2a2a",
+              "outline": "#919191",
+              "surface-container-highest": "#353534",
+              "on-primary-container": "#000000",
+              "secondary-container": "#474746",
+              "on-background": "#e5e2e1",
+              "tertiary-fixed-dim": "#474747",
+              "on-secondary-fixed": "#1c1b1b",
+              "primary": "#ffffff",
+              "background": "#131313",
+              "tertiary-fixed": "#5e5e5e",
+              "on-primary-fixed": "#ffffff",
+              "surface-bright": "#3a3939",
+              "on-tertiary-fixed": "#ffffff",
+              "surface-variant": "#353534",
+              "tertiary": "#e2e2e2",
+              "on-tertiary": "#1b1b1b",
+              "on-surface-variant": "#c6c6c6",
+              "secondary": "#c8c6c5",
+              "inverse-surface": "#e5e2e1",
+              "on-tertiary-container": "#000000",
+              "outline-variant": "#474747",
+              "on-primary-fixed-variant": "#e2e2e2",
+              "surface-container-low": "#1c1b1b",
+              "on-surface": "#e5e2e1",
+              "error": "#ffb4ab",
+              "on-error-container": "#ffdad6",
+              "on-primary": "#1a1c1c",
+              "on-tertiary-fixed-variant": "#e2e2e2",
+              "secondary-fixed-dim": "#adabaa",
+              "inverse-primary": "#5d5f5f",
+              "surface-container-lowest": "#0e0e0e",
+              "surface-tint": "#c6c6c7",
+              "surface-dim": "#131313",
+              "primary-container": "#d4d4d4",
+              "surface-container": "#201f1f",
+              "on-secondary-fixed-variant": "#3c3b3b"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Space Grotesk"]
+            },
+            borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-image: radial-gradient(circle at 50% -20%, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+            background-attachment: fixed;
+        }
+        .scanline-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<div class="scanline-overlay"></div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 rounded-none bg-[#131313]/60 backdrop-blur-xl flex justify-between items-center px-12 py-6 w-full max-w-none no-border transition-colors">
+<div class="text-white font-['Newsreader'] italic text-2xl uppercase tracking-tighter">
+            Technical Monolith
+        </div>
+<div class="hidden md:flex items-center gap-10">
+<a class="text-white font-bold border-b-0 font-['Manrope'] text-sm tracking-widest transition-all duration-300" href="#">Projects</a>
+<a class="text-[#C6C6C6] hover:text-white font-['Manrope'] text-sm tracking-widest transition-all duration-300" href="#">About</a>
+<a class="text-[#C6C6C6] hover:text-white font-['Manrope'] text-sm tracking-widest transition-all duration-300" href="#">Contact</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 font-label text-xs uppercase tracking-widest hover:bg-secondary transition-all active:scale-95">
+            Download CV
+        </button>
+</nav>
+<main class="pt-32 pb-20 px-6 md:px-12 max-w-7xl mx-auto">
+<!-- Hero Section / Header -->
+<header class="mb-20 border-l-2 border-primary pl-8">
+<div class="font-label text-xs uppercase tracking-[0.3em] text-outline mb-4">Current Directory: /root/projects</div>
+<h1 class="font-headline font-extrabold text-5xl md:text-7xl text-primary tracking-tighter mb-6 uppercase">
+                Engineered <br/>Architectures
+            </h1>
+<p class="max-w-2xl font-body text-on-surface-variant text-lg leading-relaxed">
+                A repository of high-performance systems, cryptographic protocols, and distributed infrastructure designed for absolute reliability and scale.
+            </p>
+</header>
+<!-- Technical Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-l border-outline-variant">
+<!-- Project Card 1 -->
+<div class="group border-r border-b border-outline-variant p-8 bg-surface hover:bg-surface-container-low transition-colors duration-300 flex flex-col justify-between min-h-[400px]">
+<div>
+<div class="flex justify-between items-start mb-8">
+<span class="font-label text-[10px] text-outline uppercase tracking-widest">Build v2.4.0</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">terminal</span>
+</div>
+<h3 class="font-headline text-2xl text-primary mb-4 tracking-tight group-hover:translate-x-1 transition-transform">Ethereal Core</h3>
+<p class="font-body text-sm text-on-surface-variant mb-8 leading-relaxed">
+                        A low-latency execution engine for distributed state machines, handling over 100k requests per second with sub-millisecond jitter.
+                    </p>
+<div class="flex flex-wrap gap-2 mb-12">
+<span class="bg-surface-container-highest px-2 py-1 font-label text-[10px] uppercase text-on-surface">Rust</span>
+<span class="bg-surface-container-highest px-2 py-1 font-label text-[10px] uppercase text-on-surface">gRPC</span>
+<span class="bg-surface-container-highest px-2 py-1 font-label text-[10px] uppercase text-on-surface">WASM</span>
+</div>
+</div>
+<div class="flex justify-between items-end">
+<a class="font-label text-xs uppercase tracking-widest flex items-center gap-2 group-hover:text-primary transition-colors" href="#">
+<span class="transition-transform group-hover:translate-x-1">&gt;</span> View Project
+                    </a>
+<div class="w-12 h-1 bg-outline-variant group-hover:bg-primary transition-all group-hover:w-full origin-left"></div>
+</div>
+</div>
+<!-- Project Card 2 -->
+<div class="group border-r border-b border-outline-variant p-8 bg-surface hover:bg-surface-container-low transition-colors duration-300 flex flex-col justify-between min-h-[400px]">
+<div>
+<div class="flex justify-between items-start mb-8">
+<span class="font-label text-[10px] text-outline uppercase tracking-widest">Live Node</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">database</span>
+</div>
+<h3 class="font-headline text-2xl text-primary mb-4 tracking-tight group-hover:translate-x-1 transition-transform">Nexus Ledger</h3>
+<p class="font-body text-sm text-on-surface-variant mb-8 leading-relaxed">
+                        An immutable transaction layer optimized for high-throughput financial auditing and real-time reconciliation workflows.
+                    </p>
+<div class="flex flex-wrap gap-2 mb-12">
+<span class="bg-surface-container-highest px-2 py-1 font-label text-[10px] uppercase text-on-surface">Go</span>
+<span class="bg-surface-container-highest px-2 py-1 font-label text-[10px] uppercase text-on-surface">PostgreSQL</span>
+<span class="bg-surface-container-highest px-2 py-1 font-label text-[10px] uppercase text-on-surface">Kafka</span>
+</div>
+</div>
+<div class="flex justify-between items-end">
+<a class="font-label text-xs uppercase tracking-widest flex items-center gap-2 group-hover:text-primary transition-colors" href="#">
+<span class="transition-transform group-hover:translate-x-1">&gt;</span> View Project
+                    </a>
+<div class="w-12 h-1 bg-outline-variant group-hover:bg-primary transition-all group-hover:w-full origin-left"></div>
+</div>
+</div>
+<!-- Project Card 3 -->
+<div class="group border-r border-b border-outline-variant p-8 bg-surface hover:bg-surface-container-low transition-colors duration-300 flex flex-col justify-between min-h-[400px]">
+<div>
+<div class="flex justify-between items-start mb-8">
+<span class="font-label text-[10px] text-outline uppercase tracking-widest">Alpha Release</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">shield</span>
+</div>
+<h3 class="font-headline text-2xl text-primary mb-4 tracking-tight group-hover:translate-x-1 transition-transform">Cipher Vault</h3>
+<p class="font-body text-sm text-on-surface-variant mb-8 leading-relaxed">
+                        Hardware-backed secret management system utilizing Trusted Execution Environments (TEEs) for zero-trust cloud deployments.
+                    </p>
+<div class="flex flex-wrap gap-2 mb-12">
+<span class="bg-surface-container-highest px-2 py-1 font-label text-[10px] uppercase text-on-surface">C++</span>
+<span class="bg-surface-container-highest px-2 py-1 font-label text-[10px] uppercase text-on-surface">Intel SGX</span>
+<span class="bg-surface-container-highest px-2 py-1 font-label text-[10px] uppercase text-on-surface">Docker</span>
+</div>
+</div>
+<div class="flex justify-between items-end">
+<a class="font-label text-xs uppercase tracking-widest flex items-center gap-2 group-hover:text-primary transition-colors" href="#">
+<span class="transition-transform group-hover:translate-x-1">&gt;</span> View Project
+                    </a>
+<div class="w-12 h-1 bg-outline-variant group-hover:bg-primary transition-all group-hover:w-full origin-left"></div>
+</div>
+</div>
+<!-- Project Card 4 -->
+<div class="group border-r border-b border-outline-variant p-8 bg-surface hover:bg-surface-container-low transition-colors duration-300 flex flex-col justify-between min-h-[400px]">
+<div>
+<div class="flex justify-between items-start mb-8">
+<span class="font-label text-[10px] text-outline uppercase tracking-widest">Stable v1.1</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">monitoring</span>
+</div>
+<h3 class="font-headline text-2xl text-primary mb-4 tracking-tight group-hover:translate-x-1 transition-transform">Spectral Monitor</h3>
+<p class="font-body text-sm text-on-surface-variant mb-8 leading-relaxed">
+                        Predictive infrastructure monitoring that utilizes ML to detect anomalous traffic patterns before system failure.
+                    </p>
+<div class="flex flex-wrap gap-2 mb-12">
+<span class="bg-surface-container-highest px-2 py-1 font-label text-[10px] uppercase text-on-surface">Python</span>
+<span class="bg-surface-container-highest px-2 py-1 font-label text-[10px] uppercase text-on-surface">PyTorch</span>
+<span class="bg-surface-container-highest px-2 py-1 font-label text-[10px] uppercase text-on-surface">Prometheus</span>
+</div>
+</div>
+<div class="flex justify-between items-end">
+<a class="font-label text-xs uppercase tracking-widest flex items-center gap-2 group-hover:text-primary transition-colors" href="#">
+<span class="transition-transform group-hover:translate-x-1">&gt;</span> View Project
+                    </a>
+<div class="w-12 h-1 bg-outline-variant group-hover:bg-primary transition-all group-hover:w-full origin-left"></div>
+</div>
+</div>
+<!-- Project Card 5 -->
+<div class="group border-r border-b border-outline-variant p-8 bg-surface hover:bg-surface-container-low transition-colors duration-300 flex flex-col justify-between min-h-[400px]">
+<div>
+<div class="flex justify-between items-start mb-8">
+<span class="font-label text-[10px] text-outline uppercase tracking-widest">Experimental</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">memory</span>
+</div>
+<h3 class="font-headline text-2xl text-primary mb-4 tracking-tight group-hover:translate-x-1 transition-transform">Aether Router</h3>
+<p class="font-body text-sm text-on-surface-variant mb-8 leading-relaxed">
+                        Next-generation mesh networking protocol focused on peer-to-peer data integrity in high-latency satellite environments.
+                    </p>
+<div class="flex flex-wrap gap-2 mb-12">
+<span class="bg-surface-container-highest px-2 py-1 font-label text-[10px] uppercase text-on-surface">Zig</span>
+<span class="bg-surface-container-highest px-2 py-1 font-label text-[10px] uppercase text-on-surface">UDP</span>
+<span class="bg-surface-container-highest px-2 py-1 font-label text-[10px] uppercase text-on-surface">Protobuf</span>
+</div>
+</div>
+<div class="flex justify-between items-end">
+<a class="font-label text-xs uppercase tracking-widest flex items-center gap-2 group-hover:text-primary transition-colors" href="#">
+<span class="transition-transform group-hover:translate-x-1">&gt;</span> View Project
+                    </a>
+<div class="w-12 h-1 bg-outline-variant group-hover:bg-primary transition-all group-hover:w-full origin-left"></div>
+</div>
+</div>
+<!-- Project Card 6 -->
+<div class="group border-r border-b border-outline-variant p-8 bg-surface hover:bg-surface-container-low transition-colors duration-300 flex flex-col justify-between min-h-[400px]">
+<div>
+<div class="flex justify-between items-start mb-8">
+<span class="font-label text-[10px] text-outline uppercase tracking-widest">Production Ready</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">auto_awesome_motion</span>
+</div>
+<h3 class="font-headline text-2xl text-primary mb-4 tracking-tight group-hover:translate-x-1 transition-transform">Monolith UI</h3>
+<p class="font-body text-sm text-on-surface-variant mb-8 leading-relaxed">
+                        A strictly typed component library designed for engineering dashboards, emphasizing grid-perfect alignment and data density.
+                    </p>
+<div class="flex flex-wrap gap-2 mb-12">
+<span class="bg-surface-container-highest px-2 py-1 font-label text-[10px] uppercase text-on-surface">React</span>
+<span class="bg-surface-container-highest px-2 py-1 font-label text-[10px] uppercase text-on-surface">Tailwind</span>
+<span class="bg-surface-container-highest px-2 py-1 font-label text-[10px] uppercase text-on-surface">TypeScript</span>
+</div>
+</div>
+<div class="flex justify-between items-end">
+<a class="font-label text-xs uppercase tracking-widest flex items-center gap-2 group-hover:text-primary transition-colors" href="#">
+<span class="transition-transform group-hover:translate-x-1">&gt;</span> View Project
+                    </a>
+<div class="w-12 h-1 bg-outline-variant group-hover:bg-primary transition-all group-hover:w-full origin-left"></div>
+</div>
+</div>
+</div>
+<!-- Terminal Stats Footer -->
+<div class="mt-20 border border-outline-variant bg-surface-container-lowest p-6 flex flex-col md:flex-row gap-8 justify-between">
+<div class="flex items-center gap-6">
+<div class="flex flex-col">
+<span class="font-label text-[10px] text-outline uppercase tracking-widest mb-1">Total Commits</span>
+<span class="font-headline text-xl text-primary">12,481</span>
+</div>
+<div class="w-px h-10 bg-outline-variant"></div>
+<div class="flex flex-col">
+<span class="font-label text-[10px] text-outline uppercase tracking-widest mb-1">System Uptime</span>
+<span class="font-headline text-xl text-primary">99.99%</span>
+</div>
+<div class="w-px h-10 bg-outline-variant"></div>
+<div class="flex flex-col">
+<span class="font-label text-[10px] text-outline uppercase tracking-widest mb-1">Tech Stack</span>
+<span class="font-headline text-xl text-primary">Multi-Polyglot</span>
+</div>
+</div>
+<div class="flex items-center gap-2 text-primary font-label text-[10px] uppercase tracking-widest">
+<span class="w-2 h-2 bg-primary animate-pulse"></span>
+                System Status: Operational
+            </div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-[#131313] w-full border-t-0 bg-surface-container-lowest py-20 flex flex-col md:flex-row justify-between items-center px-12 w-full">
+<div class="text-white font-serif mb-8 md:mb-0">
+<span class="font-headline font-extrabold uppercase tracking-widest">Technical Monolith</span>
+</div>
+<div class="flex gap-12 mb-8 md:mb-0">
+<a class="text-[#C6C6C6] font-['Manrope'] text-xs uppercase tracking-widest hover:text-white underline decoration-1 underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">github</a>
+<a class="text-[#C6C6C6] font-['Manrope'] text-xs uppercase tracking-widest hover:text-white underline decoration-1 underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">terminal</a>
+<a class="text-[#C6C6C6] font-['Manrope'] text-xs uppercase tracking-widest hover:text-white underline decoration-1 underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">linkedin</a>
+</div>
+<div class="font-['Manrope'] text-xs uppercase tracking-widest text-[#C6C6C6]">
+            © 2024 Technical Monolith. All rights reserved.
+        </div>
+</footer>
+</body></html>

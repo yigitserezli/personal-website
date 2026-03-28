@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact | Technical Monolith</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500&amp;family=Space+Grotesk:wght@400;500;700&amp;family=Newsreader:ital,wght@1,400;1,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary-fixed": "#5d5f5f",
+                "on-secondary-container": "#e5e2e1",
+                "on-error": "#690005",
+                "error-container": "#93000a",
+                "tertiary-container": "#919191",
+                "primary-fixed-dim": "#454747",
+                "surface": "#131313",
+                "on-secondary": "#1c1b1b",
+                "inverse-on-surface": "#313030",
+                "secondary-fixed": "#c8c6c5",
+                "surface-container-high": "#2a2a2a",
+                "outline": "#919191",
+                "surface-container-highest": "#353534",
+                "on-primary-container": "#000000",
+                "secondary-container": "#474746",
+                "on-background": "#e5e2e1",
+                "tertiary-fixed-dim": "#474747",
+                "on-secondary-fixed": "#1c1b1b",
+                "primary": "#ffffff",
+                "background": "#131313",
+                "tertiary-fixed": "#5e5e5e",
+                "on-primary-fixed": "#ffffff",
+                "surface-bright": "#3a3939",
+                "on-tertiary-fixed": "#ffffff",
+                "surface-variant": "#353534",
+                "tertiary": "#e2e2e2",
+                "on-tertiary": "#1b1b1b",
+                "on-surface-variant": "#c6c6c6",
+                "secondary": "#c8c6c5",
+                "inverse-surface": "#e5e2e1",
+                "on-tertiary-container": "#000000",
+                "outline-variant": "#474747",
+                "on-primary-fixed-variant": "#e2e2e2",
+                "surface-container-low": "#1c1b1b",
+                "on-surface": "#e5e2e1",
+                "error": "#ffb4ab",
+                "on-error-container": "#ffdad6",
+                "on-primary": "#1a1c1c",
+                "on-tertiary-fixed-variant": "#e2e2e2",
+                "secondary-fixed-dim": "#adabaa",
+                "inverse-primary": "#5d5f5f",
+                "surface-container-lowest": "#0e0e0e",
+                "surface-tint": "#c6c6c7",
+                "surface-dim": "#131313",
+                "primary-container": "#d4d4d4",
+                "surface-container": "#201f1f",
+                "on-secondary-fixed-variant": "#3c3b3b"
+              },
+              fontFamily: {
+                "headline": ["Manrope"],
+                "body": ["Inter"],
+                "label": ["Space Grotesk"]
+              },
+              borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #131313;
+            background-image: radial-gradient(circle at 50% -20%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+                              linear-gradient(to right, #474747 1px, transparent 1px),
+                              linear-gradient(to bottom, #474747 1px, transparent 1px);
+            background-size: 100% 100%, 80px 80px, 80px 80px;
+            background-attachment: fixed;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-body text-on-surface selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 rounded-none bg-[#131313]/60 backdrop-blur-xl transition-colors">
+<div class="flex justify-between items-center px-6 md:px-12 py-6 w-full max-w-none">
+<a class="text-white font-['Newsreader'] italic text-2xl uppercase tracking-tighter" href="#">Technical Monolith</a>
+<div class="hidden md:flex gap-10 items-center">
+<a class="font-['Manrope'] text-sm tracking-widest text-[#C6C6C6] hover:text-white transition-all duration-300" href="#">Projects</a>
+<a class="font-['Manrope'] text-sm tracking-widest text-[#C6C6C6] hover:text-white transition-all duration-300" href="#">About</a>
+<a class="font-['Manrope'] text-sm tracking-widest text-white font-bold border-b-0 transition-all duration-300" href="#">Contact</a>
+<button class="bg-primary text-on-primary px-6 py-2 font-label text-xs uppercase tracking-widest hover:bg-secondary transition-colors duration-300">
+                    Download CV
+                </button>
+</div>
+<!-- Mobile Menu Icon (Visual Only) -->
+<button class="md:hidden text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<main class="min-h-screen pt-32 pb-20 px-6 md:px-12 max-w-7xl mx-auto flex flex-col justify-center">
+<!-- Section Header -->
+<header class="mb-16 md:mb-24 border-l border-outline-variant pl-8">
+<p class="font-label text-primary text-sm tracking-[0.3em] mb-4 uppercase">System.Communication</p>
+<h1 class="font-headline text-5xl md:text-8xl font-extrabold text-primary tracking-tighter leading-none mb-6">
+                Init: Contact Flow
+            </h1>
+<p class="font-body text-on-surface-variant text-lg max-w-xl">
+                Engaging technical protocols for professional collaboration, system integration inquiries, or architectural discourse.
+            </p>
+</header>
+<!-- Main Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24">
+<!-- Technical Form (8 Columns) -->
+<div class="lg:col-span-7">
+<form class="space-y-12">
+<!-- Name Input -->
+<div class="group relative">
+<label class="block font-label text-[10px] tracking-[0.2em] text-on-surface-variant mb-2 uppercase group-focus-within:text-primary transition-colors" for="name">
+                            01 // SENDER_IDENTITY
+                        </label>
+<input class="w-full bg-transparent border-t-0 border-x-0 border-b border-outline-variant focus:border-primary focus:ring-0 text-primary font-headline text-xl py-4 placeholder:text-surface-container-highest transition-all" id="name" placeholder="Name" type="text"/>
+</div>
+<!-- Email Input -->
+<div class="group relative">
+<label class="block font-label text-[10px] tracking-[0.2em] text-on-surface-variant mb-2 uppercase group-focus-within:text-primary transition-colors" for="email">
+                            02 // RETURN_PATH
+                        </label>
+<input class="w-full bg-transparent border-t-0 border-x-0 border-b border-outline-variant focus:border-primary focus:ring-0 text-primary font-headline text-xl py-4 placeholder:text-surface-container-highest transition-all" id="email" placeholder="Email Address" type="email"/>
+</div>
+<!-- Message Input -->
+<div class="group relative">
+<label class="block font-label text-[10px] tracking-[0.2em] text-on-surface-variant mb-2 uppercase group-focus-within:text-primary transition-colors" for="message">
+                            03 // DATA_PAYLOAD
+                        </label>
+<textarea class="w-full bg-transparent border-t-0 border-x-0 border-b border-outline-variant focus:border-primary focus:ring-0 text-primary font-body text-lg py-4 placeholder:text-surface-container-highest transition-all resize-none" id="message" placeholder="Message content..." rows="4"></textarea>
+</div>
+<!-- Submit Button -->
+<div class="pt-6">
+<button class="group flex items-center gap-4 bg-primary text-on-primary px-10 py-5 font-label text-sm font-bold uppercase tracking-widest hover:bg-secondary transition-all duration-300" type="submit">
+                            Transmit Signal
+                            <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+<!-- Sidebar Info (5 Columns) -->
+<div class="lg:col-span-5 flex flex-col justify-between">
+<!-- Contact Methods -->
+<div class="space-y-16">
+<section>
+<h3 class="font-label text-[10px] tracking-[0.2em] text-on-surface-variant mb-6 uppercase border-b border-outline-variant pb-2">Network Nodes</h3>
+<div class="space-y-6">
+<a class="group flex items-center justify-between py-2 text-primary hover:text-secondary transition-colors" href="#">
+<span class="font-headline text-2xl font-bold tracking-tight">GitHub</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">north_east</span>
+</a>
+<a class="group flex items-center justify-between py-2 text-primary hover:text-secondary transition-colors" href="#">
+<span class="font-headline text-2xl font-bold tracking-tight">LinkedIn</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">north_east</span>
+</a>
+<a class="group flex items-center justify-between py-2 text-primary hover:text-secondary transition-colors" href="#">
+<span class="font-headline text-2xl font-bold tracking-tight">Terminal</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">north_east</span>
+</a>
+</div>
+</section>
+<section>
+<h3 class="font-label text-[10px] tracking-[0.2em] text-on-surface-variant mb-6 uppercase border-b border-outline-variant pb-2">Availability</h3>
+<div class="flex items-center gap-4 mb-2">
+<div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+<span class="font-label text-xs tracking-widest text-primary uppercase">Open for consultation</span>
+</div>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed">
+                            Currently based in Istanbul, Turkey (GMT+3). Responding to all verified incoming signals within 24-48 standard operation cycles.
+                        </p>
+</section>
+</div>
+<!-- Footer-aligned Metadata (Visual Only) -->
+<div class="hidden lg:block pt-12">
+<div class="p-6 bg-surface-container-lowest border border-outline-variant">
+<div class="flex justify-between items-end">
+<div>
+<p class="font-label text-[9px] text-outline uppercase tracking-widest mb-1">Packet Status</p>
+<p class="font-label text-xs text-primary uppercase">Ready for transmission</p>
+</div>
+<div class="text-right">
+<p class="font-label text-[9px] text-outline uppercase tracking-widest mb-1">Encryption</p>
+<p class="font-label text-xs text-primary uppercase">AES-256 Enabled</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Global Footer -->
+<footer class="w-full bg-[#131313] py-20 border-t-0">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 w-full">
+<div class="mb-8 md:mb-0">
+<span class="text-white font-serif font-['Newsreader'] italic text-xl">Technical Monolith</span>
+<p class="font-['Manrope'] text-xs uppercase tracking-widest text-[#C6C6C6] mt-2">© 2024 Technical Monolith. All rights reserved.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-['Manrope'] text-xs uppercase tracking-widest text-[#C6C6C6] hover:text-white transition-opacity underline decoration-1 underline-offset-4" href="#">github</a>
+<a class="font-['Manrope'] text-xs uppercase tracking-widest text-[#C6C6C6] hover:text-white transition-opacity underline decoration-1 underline-offset-4" href="#">terminal</a>
+</div>
+</div>
+</footer>
+<!-- Aesthetic Schematic Lines (Decorative) -->
+<div class="fixed top-0 bottom-0 left-12 w-[1px] bg-outline-variant/30 -z-10"></div>
+<div class="fixed top-0 bottom-0 right-12 w-[1px] bg-outline-variant/30 -z-10"></div>
+<div class="fixed left-0 right-0 top-32 h-[1px] bg-outline-variant/30 -z-10"></div>
+</body></html>

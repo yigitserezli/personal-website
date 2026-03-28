@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&amp;family=Inter:wght@300;400;600&amp;family=Space+Grotesk:wght@300;400;700&amp;family=Newsreader:ital,wght@1,400;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            font-family: 'Inter', sans-serif;
+        }
+        .monolith-grid {
+            background-image: radial-gradient(circle at 2px 2px, #474747 1px, transparent 0);
+            background-size: 40px 40px;
+            opacity: 0.1;
+        }
+        .hero-glow {
+            background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08) 0%, rgba(19, 19, 19, 0) 70%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            font-size: 1.25rem;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .text-technical {
+            font-family: 'Space Grotesk', monospace;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ffffff",
+                        "surface": "#131313",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-container-lowest": "#0e0e0e",
+                        "outline": "#919191",
+                        "outline-variant": "#474747",
+                        "on-surface": "#e5e2e1",
+                        "on-surface-variant": "#c6c6c6",
+                        "secondary": "#c8c6c5",
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"],
+                        "serif-italic": ["Newsreader"]
+                    },
+                    borderRadius: {
+                        "none": "0px",
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface selection:bg-primary selection:text-surface-container-lowest overflow-x-hidden">
+<!-- Background Layers -->
+<div class="fixed inset-0 monolith-grid pointer-events-none"></div>
+<div class="fixed inset-0 hero-glow pointer-events-none"></div>
+<!-- Shared Component: TopNavBar -->
+<nav class="fixed top-0 w-full z-50 rounded-none bg-[#131313]/60 backdrop-blur-xl flex justify-between items-center px-12 py-6 w-full max-w-none">
+<div class="flex items-center gap-2">
+<span class="text-white font-serif italic text-2xl uppercase tracking-tighter">Technical Monolith</span>
+</div>
+<div class="hidden md:flex items-center gap-12">
+<a class="text-[#C6C6C6] font-['Manrope'] text-sm tracking-widest hover:text-white transition-all duration-300" href="#">Projects</a>
+<a class="text-white font-bold border-b-0 font-['Manrope'] text-sm tracking-widest transition-all duration-300" href="#">About</a>
+<a class="text-[#C6C6C6] font-['Manrope'] text-sm tracking-widest hover:text-white transition-all duration-300" href="#">Contact</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 text-sm font-['Manrope'] tracking-widest uppercase hover:bg-secondary transition-colors duration-200 active:scale-95">
+            Download CV
+        </button>
+</nav>
+<main class="relative pt-32 pb-24 px-12 max-w-7xl mx-auto">
+<!-- Layout Shell -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-16">
+<!-- Left Sidebar Navigation (Desktop) -->
+<aside class="md:col-span-3 hidden md:block">
+<div class="sticky top-32 space-y-8">
+<div class="group cursor-pointer">
+<p class="text-technical text-xs tracking-widest text-outline mb-1">01 / SECTION</p>
+<h3 class="text-primary font-headline font-extrabold text-xl tracking-tighter group-hover:pl-2 transition-all duration-300">The Persona</h3>
+</div>
+<div class="group cursor-pointer opacity-40 hover:opacity-100 transition-opacity">
+<p class="text-technical text-xs tracking-widest text-outline mb-1">02 / CORE</p>
+<h3 class="text-primary font-headline font-extrabold text-xl tracking-tighter group-hover:pl-2 transition-all duration-300">The Engine</h3>
+</div>
+<div class="group cursor-pointer opacity-40 hover:opacity-100 transition-opacity">
+<p class="text-technical text-xs tracking-widest text-outline mb-1">03 / HISTORY</p>
+<h3 class="text-primary font-headline font-extrabold text-xl tracking-tighter group-hover:pl-2 transition-all duration-300">The Chronicle</h3>
+</div>
+<div class="pt-12 border-t border-outline-variant">
+<div class="p-4 bg-surface-container-lowest border border-outline-variant">
+<p class="text-technical text-[10px] uppercase text-outline mb-2">Build Status</p>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+<span class="text-technical text-xs text-on-surface">System Stable.v2.4</span>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="md:col-span-9 space-y-32">
+<!-- 01 / The Persona -->
+<section class="space-y-8" id="persona">
+<header>
+<h1 class="text-primary font-headline text-6xl md:text-8xl font-extrabold tracking-tighter leading-none mb-6">
+                            Yigit<br/>Serezli.
+                        </h1>
+<p class="text-technical text-secondary tracking-[0.2em] uppercase text-sm mb-12">Software Engineer / System Architect</p>
+</header>
+<div class="grid md:grid-cols-5 gap-12 items-start">
+<div class="md:col-span-3 space-y-6">
+<p class="text-xl font-body text-on-surface-variant leading-relaxed">
+                                I build digital infrastructures that demand precision. My approach focuses on <span class="text-white font-semibold">architectural integrity</span> and the elimination of technical debt before the first line of code is ever committed.
+                            </p>
+<p class="text-on-surface-variant leading-relaxed opacity-80">
+                                With over half a decade spent navigating the complexities of full-stack ecosystems, I specialize in translating high-level business logic into robust, scalable systems. I don't just write functions; I engineer reliable experiences that scale from zero to millions of requests without friction.
+                            </p>
+<div class="pt-4">
+<button class="group flex items-center gap-4 text-white text-technical tracking-widest uppercase text-sm border border-white px-8 py-4 hover:bg-white hover:text-black transition-all duration-300">
+                                    Download Technical CV
+                                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="md:col-span-2 relative aspect-[4/5] bg-surface-container-lowest border border-outline-variant overflow-hidden group">
+<img alt="Profile Photo" class="w-full h-full object-cover grayscale opacity-60 group-hover:scale-105 transition-transform duration-700" data-alt="Monochrome cinematic portrait of a focused male engineer in a dark studio setting with sharp side lighting and deep shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCp1pIfvnwtfr9DoUJ2f9f6eFvfJgGJdt49c6XEI5SkvdhpZVyjsT47xWR1tLQ9YidWJ97iGFFIAQnXAPDywkasK6Kqw9kj0JBtrdaInJhIYf7QdPLfCOWgb__eaJofiYsVo_xYHPSbZh6LhoVgqP2HWQ8ur6CR1wG8Nfeaz43j6TY2Yc-dsBtoqnyxQn5j9ac4Z5a4TQjC1DhnX3fszYkDtEbnvrxkBAGJaESB9sTD_xGYBxD6TaVHcbxU6lSwll7x3xm3vxu3EQ"/>
+<div class="absolute bottom-0 left-0 w-full p-4 bg-surface-container-lowest/80 backdrop-blur-md border-t border-outline-variant">
+<p class="text-technical text-[10px] text-outline">LOCATION: ISTANBUL, TR / 41.0082° N</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 02 / The Engine (Core Stack) -->
+<section class="space-y-12" id="engine">
+<div class="flex items-center gap-6">
+<h2 class="text-primary font-headline text-3xl font-extrabold tracking-tight uppercase">02 / The Engine</h2>
+<div class="h-px flex-1 bg-outline-variant"></div>
+</div>
+<div class="grid md:grid-cols-3 gap-1">
+<!-- React Card -->
+<div class="bg-surface-container-lowest border border-outline-variant p-8 group hover:border-primary transition-colors duration-300">
+<div class="mb-8 flex justify-between items-start">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="component_exchange">component_exchange</span>
+<span class="text-technical text-[10px] text-outline tracking-tighter">01.WEB_CORE</span>
+</div>
+<h4 class="text-white font-headline font-bold text-xl mb-2">React</h4>
+<p class="text-on-surface-variant text-sm font-body leading-relaxed mb-6">Component-driven architecture for complex single-page applications with heavy state management requirements.</p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container-high text-technical text-[10px] px-2 py-1 uppercase text-on-surface">Hooks</span>
+<span class="bg-surface-container-high text-technical text-[10px] px-2 py-1 uppercase text-on-surface">Redux</span>
+<span class="bg-surface-container-high text-technical text-[10px] px-2 py-1 uppercase text-on-surface">Next.js</span>
+</div>
+</div>
+<!-- React Native Card -->
+<div class="bg-surface-container-lowest border border-outline-variant p-8 group hover:border-primary transition-colors duration-300">
+<div class="mb-8 flex justify-between items-start">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="smartphone">smartphone</span>
+<span class="text-technical text-[10px] text-outline tracking-tighter">02.MOBILE_UNIT</span>
+</div>
+<h4 class="text-white font-headline font-bold text-xl mb-2">React Native</h4>
+<p class="text-on-surface-variant text-sm font-body leading-relaxed mb-6">Cross-platform mobile engineering with native modules integration for iOS and Android deployment.</p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container-high text-technical text-[10px] px-2 py-1 uppercase text-on-surface">Expo</span>
+<span class="bg-surface-container-high text-technical text-[10px] px-2 py-1 uppercase text-on-surface">Bridge</span>
+<span class="bg-surface-container-high text-technical text-[10px] px-2 py-1 uppercase text-on-surface">Performance</span>
+</div>
+</div>
+<!-- Node.js Card -->
+<div class="bg-surface-container-lowest border border-outline-variant p-8 group hover:border-primary transition-colors duration-300">
+<div class="mb-8 flex justify-between items-start">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="terminal">terminal</span>
+<span class="text-technical text-[10px] text-outline tracking-tighter">03.SYSTEM_LEVEL</span>
+</div>
+<h4 class="text-white font-headline font-bold text-xl mb-2">NodeJS</h4>
+<p class="text-on-surface-variant text-sm font-body leading-relaxed mb-6">High-concurrency backend services, RESTful/GraphQL APIs, and real-time microservice communications.</p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container-high text-technical text-[10px] px-2 py-1 uppercase text-on-surface">Express</span>
+<span class="bg-surface-container-high text-technical text-[10px] px-2 py-1 uppercase text-on-surface">Socket.io</span>
+<span class="bg-surface-container-high text-technical text-[10px] px-2 py-1 uppercase text-on-surface">PostgreSQL</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 03 / The Chronicle (Timeline) -->
+<section class="space-y-12" id="chronicle">
+<div class="flex items-center gap-6">
+<h2 class="text-primary font-headline text-3xl font-extrabold tracking-tight uppercase">03 / The Chronicle</h2>
+<div class="h-px flex-1 bg-outline-variant"></div>
+</div>
+<div class="relative pl-8 border-l border-outline-variant space-y-20">
+<!-- Experience Item 1 -->
+<div class="relative">
+<div class="absolute -left-[41px] top-0 w-4 h-4 bg-surface border-2 border-primary"></div>
+<div class="space-y-4">
+<div class="flex flex-wrap justify-between items-baseline gap-4">
+<h3 class="text-2xl font-headline font-bold text-white">Senior Software Engineer</h3>
+<span class="text-technical text-sm text-secondary tracking-widest">2021 — PRESENT</span>
+</div>
+<p class="text-technical text-sm text-outline">Lead Dev Team / FinTech Solutions</p>
+<p class="text-on-surface-variant max-w-2xl leading-relaxed">
+                                    Architected a secure payment processing engine handling $2M+ in daily transactions. Optimized React Native rendering pipelines, reducing load times by 40% across mid-tier devices.
+                                </p>
+</div>
+</div>
+<!-- Experience Item 2 -->
+<div class="relative">
+<div class="absolute -left-[41px] top-0 w-4 h-4 bg-surface border-2 border-outline"></div>
+<div class="space-y-4">
+<div class="flex flex-wrap justify-between items-baseline gap-4">
+<h3 class="text-2xl font-headline font-bold text-white">Full Stack Developer</h3>
+<span class="text-technical text-sm text-secondary tracking-widest">2019 — 2021</span>
+</div>
+<p class="text-technical text-sm text-outline">Neural Systems Inc.</p>
+<p class="text-on-surface-variant max-w-2xl leading-relaxed">
+                                    Developed scalable Node.js microservices for data visualization dashboards. Implemented CI/CD pipelines that reduced deployment errors by 65%.
+                                </p>
+</div>
+</div>
+<!-- Experience Item 3 -->
+<div class="relative">
+<div class="absolute -left-[41px] top-0 w-4 h-4 bg-surface border-2 border-outline-variant"></div>
+<div class="space-y-4">
+<div class="flex flex-wrap justify-between items-baseline gap-4">
+<h3 class="text-2xl font-headline font-bold text-white">Junior Web Developer</h3>
+<span class="text-technical text-sm text-secondary tracking-widest">2017 — 2019</span>
+</div>
+<p class="text-technical text-sm text-outline">OpenSource Creative</p>
+<p class="text-on-surface-variant max-w-2xl leading-relaxed">
+                                    Focused on building interactive web interfaces with React and maintaining legacy PHP systems during migration phases.
+                                </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-20 border-t border-outline-variant text-center">
+<p class="text-technical text-xs tracking-[0.3em] text-outline uppercase mb-8">Ready for Production</p>
+<h2 class="text-primary font-headline text-4xl font-extrabold tracking-tighter mb-12 max-w-xl mx-auto">
+                        Incorporate structural excellence into your next engineering project.
+                    </h2>
+<div class="flex flex-col md:flex-row justify-center gap-6">
+<button class="bg-primary text-surface font-headline font-extrabold px-12 py-5 uppercase tracking-widest hover:bg-secondary transition-colors">
+                            Download Technical CV
+                        </button>
+<button class="bg-transparent text-primary border border-outline-variant font-headline font-extrabold px-12 py-5 uppercase tracking-widest hover:border-primary transition-colors">
+                            Initiate Contact
+                        </button>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Shared Component: Footer -->
+<footer class="w-full border-t-0 bg-surface-container-lowest py-20">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 w-full">
+<div class="mb-8 md:mb-0">
+<span class="text-white font-serif text-lg tracking-widest uppercase italic">Technical Monolith</span>
+<p class="text-[#C6C6C6] font-['Manrope'] text-xs uppercase tracking-widest mt-2">© 2024 Technical Monolith. All rights reserved.</p>
+</div>
+<div class="flex gap-12">
+<a class="text-[#C6C6C6] font-['Manrope'] text-xs uppercase tracking-widest hover:text-white underline decoration-1 underline-offset-4 transition-opacity opacity-80 hover:opacity-100" href="#">github</a>
+<a class="text-[#C6C6C6] font-['Manrope'] text-xs uppercase tracking-widest hover:text-white underline decoration-1 underline-offset-4 transition-opacity opacity-80 hover:opacity-100" href="#">terminal</a>
+<a class="text-[#C6C6C6] font-['Manrope'] text-xs uppercase tracking-widest hover:text-white underline decoration-1 underline-offset-4 transition-opacity opacity-80 hover:opacity-100" href="#">linkedin</a>
+</div>
+</div>
+</footer>
+<!-- Decorative Border Frame -->
+<div class="fixed top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent z-[100]"></div>
+<div class="fixed top-0 left-0 w-1 h-full bg-outline-variant/10 z-[100]"></div>
+<div class="fixed top-0 right-0 w-1 h-full bg-outline-variant/10 z-[100]"></div>
+</body></html>

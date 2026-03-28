@@ -58,24 +58,24 @@ export default function Contact() {
       <div className="tm-dot-grid absolute inset-0 pointer-events-none opacity-20" />
       <div className="tm-radial-monolith absolute inset-0 pointer-events-none" />
       <div className="tm-cinematic-vignette absolute inset-0 pointer-events-none opacity-70" />
-      <div className="pointer-events-none absolute left-7 top-0 bottom-0 w-px bg-[var(--tm-outline-variant)]/35 md:left-14 xl:left-16" />
-      <div className="pointer-events-none absolute right-7 top-0 bottom-0 w-px bg-[var(--tm-outline-variant)]/35 md:right-14 xl:right-16" />
-      <div className="pointer-events-none absolute left-0 right-0 top-32 h-px bg-[var(--tm-outline-variant)]/35" />
+      <div className="pointer-events-none absolute bottom-0 left-7 top-0 hidden w-px bg-[var(--tm-outline-variant)]/35 sm:block md:left-14 xl:left-16" />
+      <div className="pointer-events-none absolute bottom-0 right-7 top-0 hidden w-px bg-[var(--tm-outline-variant)]/35 sm:block md:right-14 xl:right-16" />
+      <div className="pointer-events-none absolute left-0 right-0 top-24 h-px bg-[var(--tm-outline-variant)]/35 md:top-32" />
 
-      <main className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl flex-col justify-center px-7 pt-36 pb-24 md:px-14 md:pt-40 xl:px-16">
-        <header className="mb-14 border-l border-[var(--tm-outline-variant)] pl-6 md:mb-20 md:pl-8">
-          <p className="font-technical mb-4 text-sm uppercase tracking-[0.3em] text-[var(--tm-primary)]">System.Communication</p>
-          <h1 className="text-5xl font-extrabold tracking-[-0.02em] text-[var(--tm-primary)] md:text-7xl lg:text-8xl" style={{ fontFamily: "Manrope, sans-serif" }}>
+      <main className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl flex-col justify-center px-5 pt-32 pb-20 md:px-14 md:pt-40 md:pb-24 xl:px-16">
+        <header className="mb-12 border-l border-[var(--tm-outline-variant)] pl-4 md:mb-20 md:pl-8">
+          <p className="font-technical mb-3 text-xs uppercase tracking-[0.2em] text-[var(--tm-primary)] md:mb-4 md:text-sm md:tracking-[0.3em]">System.Communication</p>
+          <h1 className="text-4xl font-extrabold tracking-[-0.02em] text-[var(--tm-primary)] sm:text-5xl md:text-7xl lg:text-8xl" style={{ fontFamily: "Manrope, sans-serif" }}>
             Init: Contact Flow
           </h1>
-          <p className="mt-6 max-w-2xl text-lg text-[var(--tm-on-surface-variant)]">
+          <p className="mt-5 max-w-2xl text-base text-[var(--tm-on-surface-variant)] md:mt-6 md:text-lg">
             Engaging technical protocols for professional collaboration, system integration inquiries, or architectural discourse.
           </p>
         </header>
 
-        <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-20">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-20">
           <div className="lg:col-span-7">
-            <form onSubmit={handleSubmit} className="space-y-10">
+            <form onSubmit={handleSubmit} className="space-y-8 md:space-y-10">
               <div className="group">
                 <label className="mb-2 block font-technical text-[10px] uppercase tracking-[0.2em] text-[var(--tm-on-surface-variant)] transition-colors group-focus-within:text-[var(--tm-primary)]" htmlFor="name">
                   01 // SENDER_IDENTITY
@@ -86,7 +86,7 @@ export default function Contact() {
                   placeholder="Name"
                   value={senderName}
                   onChange={(event) => setSenderName(event.target.value)}
-                  className="w-full border-x-0 border-t-0 border-b border-[var(--tm-outline-variant)] bg-transparent py-4 text-xl text-[var(--tm-primary)] placeholder:text-[var(--tm-surface-container-highest)] focus:border-[var(--tm-primary)] focus:ring-0"
+                  className="w-full border-x-0 border-t-0 border-b border-[var(--tm-outline-variant)] bg-transparent py-3.5 text-lg text-[var(--tm-primary)] placeholder:text-[var(--tm-surface-container-highest)] focus:border-[var(--tm-primary)] focus:ring-0 md:py-4 md:text-xl"
                   style={{ fontFamily: "Manrope, sans-serif" }}
                 />
               </div>
@@ -101,7 +101,7 @@ export default function Contact() {
                   placeholder="Email Address"
                   value={returnEmail}
                   onChange={(event) => setReturnEmail(event.target.value)}
-                  className="w-full border-x-0 border-t-0 border-b border-[var(--tm-outline-variant)] bg-transparent py-4 text-xl text-[var(--tm-primary)] placeholder:text-[var(--tm-surface-container-highest)] focus:border-[var(--tm-primary)] focus:ring-0"
+                  className="w-full border-x-0 border-t-0 border-b border-[var(--tm-outline-variant)] bg-transparent py-3.5 text-lg text-[var(--tm-primary)] placeholder:text-[var(--tm-surface-container-highest)] focus:border-[var(--tm-primary)] focus:ring-0 md:py-4 md:text-xl"
                   style={{ fontFamily: "Manrope, sans-serif" }}
                 />
               </div>
@@ -116,7 +116,7 @@ export default function Contact() {
                   rows={5}
                   value={message}
                   onChange={(event) => setMessage(event.target.value)}
-                  className="w-full resize-none border-x-0 border-t-0 border-b border-[var(--tm-outline-variant)] bg-transparent py-4 text-lg text-[var(--tm-primary)] placeholder:text-[var(--tm-surface-container-highest)] focus:border-[var(--tm-primary)] focus:ring-0"
+                  className="w-full resize-none border-x-0 border-t-0 border-b border-[var(--tm-outline-variant)] bg-transparent py-3.5 text-base text-[var(--tm-primary)] placeholder:text-[var(--tm-surface-container-highest)] focus:border-[var(--tm-primary)] focus:ring-0 md:py-4 md:text-lg"
                 />
               </div>
 
@@ -124,7 +124,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={isSending}
-                  className="group flex items-center gap-3 bg-[var(--tm-primary)] px-10 py-5 font-technical text-sm font-bold uppercase tracking-[0.2em] text-[var(--tm-on-primary)] transition-colors duration-150 hover:bg-[var(--tm-secondary)]"
+                  className="group flex w-full items-center justify-center gap-3 bg-[var(--tm-primary)] px-8 py-4 font-technical text-xs font-bold uppercase tracking-[0.16em] text-[var(--tm-on-primary)] transition-colors duration-150 hover:bg-[var(--tm-secondary)] sm:w-auto sm:px-10 sm:py-5 sm:text-sm sm:tracking-[0.2em]"
                 >
                   {isSending ? "Transmitting..." : "Transmit Signal"}
                   <span className="text-base transition-transform group-hover:translate-x-1">-&gt;</span>
@@ -156,7 +156,7 @@ export default function Contact() {
                     rel="noreferrer"
                     className="group flex items-center justify-between py-2 text-[var(--tm-primary)] transition-colors hover:text-[var(--tm-secondary)]"
                   >
-                    <span className="text-3xl font-bold tracking-tight" style={{ fontFamily: "Manrope, sans-serif" }}>
+                    <span className="text-2xl font-bold tracking-tight md:text-3xl" style={{ fontFamily: "Manrope, sans-serif" }}>
                       GitHub
                     </span>
                     <span className="text-[var(--tm-outline-variant)] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-[var(--tm-primary)]">
@@ -170,7 +170,7 @@ export default function Contact() {
                     rel="noreferrer"
                     className="group flex items-center justify-between py-2 text-[var(--tm-primary)] transition-colors hover:text-[var(--tm-secondary)]"
                   >
-                    <span className="text-3xl font-bold tracking-tight" style={{ fontFamily: "Manrope, sans-serif" }}>
+                    <span className="text-2xl font-bold tracking-tight md:text-3xl" style={{ fontFamily: "Manrope, sans-serif" }}>
                       LinkedIn
                     </span>
                     <span className="text-[var(--tm-outline-variant)] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-[var(--tm-primary)]">
@@ -184,7 +184,7 @@ export default function Contact() {
                     rel="noreferrer"
                     className="group flex items-center justify-between py-2 text-[var(--tm-primary)] transition-colors hover:text-[var(--tm-secondary)]"
                   >
-                    <span className="text-3xl font-bold tracking-tight" style={{ fontFamily: "Manrope, sans-serif" }}>
+                    <span className="text-2xl font-bold tracking-tight md:text-3xl" style={{ fontFamily: "Manrope, sans-serif" }}>
                       Email
                     </span>
                     <span className="text-[var(--tm-outline-variant)] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-[var(--tm-primary)]">
@@ -208,13 +208,13 @@ export default function Contact() {
               </section>
             </div>
 
-            <div className="mt-12 border border-[var(--tm-outline-variant)] bg-[var(--tm-surface-container-lowest)] p-6">
-              <div className="flex items-end justify-between gap-6">
+            <div className="mt-10 border border-[var(--tm-outline-variant)] bg-[var(--tm-surface-container-lowest)] p-5 md:mt-12 md:p-6">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
                 <div>
                   <p className="mb-1 font-technical text-[9px] uppercase tracking-[0.18em] text-[var(--tm-outline)]">Packet Status</p>
                   <p className="font-technical text-xs uppercase tracking-[0.14em] text-[var(--tm-primary)]">Ready for transmission</p>
                 </div>
-                <div className="text-right">
+                <div className="text-left sm:text-right">
                   <p className="mb-1 font-technical text-[9px] uppercase tracking-[0.18em] text-[var(--tm-outline)]">Encryption</p>
                   <p className="font-technical text-xs uppercase tracking-[0.14em] text-[var(--tm-primary)]">AES-256 Enabled</p>
                 </div>

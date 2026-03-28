@@ -112,22 +112,22 @@ const projects: Project[] = [
 export default function ProjectsShowcase() {
   return (
     <div className="min-h-screen bg-[var(--tm-background)] text-[var(--tm-on-surface)]">
-      <main className="relative overflow-hidden px-7 pt-36 pb-24 md:px-14 md:pt-40 xl:px-16">
+      <main className="relative overflow-hidden px-5 pt-32 pb-20 md:px-14 md:pt-40 md:pb-24 xl:px-16">
         <div className="tm-dot-grid absolute inset-0 pointer-events-none opacity-20" />
         <div className="tm-radial-monolith absolute inset-0 pointer-events-none" />
         <div className="relative z-10 mx-auto max-w-7xl">
-          <header className="mb-16 border-l-2 border-[var(--tm-primary)] pl-6 md:pl-8">
-            <p className="font-technical text-xs uppercase tracking-[0.28em] text-[var(--tm-outline)]">Current Directory: /projects</p>
-            <h1 className="mt-4 text-5xl font-extrabold uppercase tracking-[-0.02em] text-[var(--tm-primary)] md:text-7xl" style={{ fontFamily: "Manrope, sans-serif" }}>
+          <header className="mb-12 border-l-2 border-[var(--tm-primary)] pl-4 md:mb-16 md:pl-8">
+            <p className="font-technical text-[10px] uppercase tracking-[0.2em] text-[var(--tm-outline)] md:text-xs md:tracking-[0.28em]">Current Directory: /projects</p>
+            <h1 className="mt-4 text-4xl font-extrabold uppercase tracking-[-0.02em] text-[var(--tm-primary)] sm:text-5xl md:text-7xl" style={{ fontFamily: "Manrope, sans-serif" }}>
               Engineered Products
             </h1>
-            <p className="mt-6 max-w-3xl text-[var(--tm-on-surface-variant)]">
+            <p className="mt-5 max-w-3xl text-sm text-[var(--tm-on-surface-variant)] md:mt-6 md:text-base">
               A complete index of live products and ongoing systems built across marketplaces, operations software, AI-enabled media workflows, and sector-specific digital platforms.
             </p>
           </header>
 
           <section>
-            <div className="mb-8 flex items-end justify-between border-b border-[var(--tm-outline-variant)] pb-6">
+            <div className="mb-8 flex flex-col items-start gap-2 border-b border-[var(--tm-outline-variant)] pb-6 sm:flex-row sm:items-end sm:justify-between">
               <p className="font-technical text-sm uppercase tracking-[0.24em] text-[var(--tm-on-surface-variant)]">All Projects</p>
               <p className="font-technical text-xs uppercase tracking-[0.2em] text-[var(--tm-outline)]">Total: {projects.length}</p>
             </div>
@@ -137,7 +137,7 @@ export default function ProjectsShowcase() {
                 const content = (
                   <article
                     key={project.name}
-                    className="group flex h-full min-h-[320px] flex-col justify-between border border-[var(--tm-outline-variant)] bg-[var(--tm-surface)] p-6 transition-all duration-150 hover:border-[var(--tm-primary)] hover:bg-[var(--tm-surface-container-low)]"
+                    className="group flex h-full min-h-[280px] flex-col justify-between border border-[var(--tm-outline-variant)] bg-[var(--tm-surface)] p-5 transition-all duration-150 hover:border-[var(--tm-primary)] hover:bg-[var(--tm-surface-container-low)] sm:min-h-[320px] sm:p-6"
                   >
                     <div>
                       <div className="mb-6 flex items-start justify-between gap-4">
@@ -161,7 +161,7 @@ export default function ProjectsShowcase() {
                         ) : null}
                       </div>
 
-                      <h2 className="mb-4 text-2xl font-bold tracking-tight text-[var(--tm-primary)]" style={{ fontFamily: "Manrope, sans-serif" }}>
+                      <h2 className="mb-4 text-xl font-bold tracking-tight text-[var(--tm-primary)] sm:text-2xl" style={{ fontFamily: "Manrope, sans-serif" }}>
                         {project.name}
                       </h2>
 
@@ -179,7 +179,7 @@ export default function ProjectsShowcase() {
                       </div>
                     </div>
 
-                    <div className="mt-8 flex items-center justify-between">
+                    <div className="mt-7 flex items-center justify-between sm:mt-8">
                       <span className="font-technical text-xs uppercase tracking-[0.2em] text-[var(--tm-primary)] transition-transform group-hover:translate-x-1">
                         {project.href ? "> View Project" : "> Internal Build"}
                       </span>

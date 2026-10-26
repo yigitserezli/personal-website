@@ -1,158 +1,129 @@
-import yapigonLogo from "../assets/yapigonlogo.webp";
 import { Link } from "react-router-dom";
+import { Blank, CodeLines, Cm, Fn, Kw, Line, Num, Pun, Str } from "../components/Code";
+import { projects } from "../content";
 
-const tags = ["React", "React Native", "NodeJS", "Full-Stack Engineer"];
+const featured = projects.filter((project) => project.featured);
 
 export default function Landing() {
-    return (
-        <>
-            <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-5 pt-32 pb-20 md:px-14 md:pt-48 md:pb-28 xl:px-16 xl:pt-52">
-                <div className="tm-dot-grid absolute inset-0 pointer-events-none opacity-25" />
-                <div className="tm-radial-monolith absolute inset-0 pointer-events-none" />
-                <div className="tm-cinematic-vignette absolute inset-0 pointer-events-none" />
-                <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/55 to-transparent pointer-events-none" />
-                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
-                <div className="tm-blueprint-line-h absolute top-1/4 left-0 opacity-35" />
-                <div className="tm-blueprint-line-h absolute right-0 bottom-1/4 opacity-35" />
-                <div className="tm-blueprint-line-v absolute top-0 left-1/4 opacity-35" />
-                <div className="tm-blueprint-line-v absolute right-1/4 bottom-0 opacity-35" />
+  return (
+    <div className="doc max-w-[52rem]">
+      <Line className="font-mono text-sm text-muted">
+        <Cm>/** Full stack developer based in İzmir, Türkiye. */</Cm>
+      </Line>
+      <Line as="h1" className="mt-3 text-[2.5rem] text-fg sm:text-6xl lg:text-7xl">
+        Yiğit Serezli
+        <span className="caret" aria-hidden="true" />
+      </Line>
+      <Line as="p" className="mt-5 max-w-[34em] text-lg text-muted sm:text-xl">
+        I build web and mobile products end to end: the API, the database, the app in your hand, and the small details
+        that make it feel finished.
+      </Line>
+      <Blank />
 
-                <section id="about" className="relative z-10 mx-auto flex w-full max-w-[90rem] flex-col items-center text-center">
-                    <div className="mb-10 flex items-center gap-3 md:mb-14 md:gap-4">
-                        <span className="h-2 w-2 animate-pulse bg-[var(--tm-primary)]" />
-                        <span className="font-technical text-[10px] uppercase tracking-[0.2em] text-[var(--tm-on-surface-variant)] md:text-xs md:tracking-[0.3em]">
-                            System.init(YigitSerezli.portfolio)
-                        </span>
-                    </div>
+      <CodeLines label="Profile as code">
+        <Line>
+          <Kw>export const</Kw> <Fn>yigit</Fn> <Pun>=</Pun> <Pun>{"{"}</Pun>
+        </Line>
+        <Line indent={1}>
+          role<Pun>:</Pun> <Str>Full stack developer</Str>
+          <Pun>,</Pun>
+        </Line>
+        <Line indent={1}>
+          location<Pun>:</Pun> <Str>İzmir, TR</Str>
+          <Pun>,</Pun>
+        </Line>
+        <Line indent={1}>
+          stack<Pun>: [</Pun>
+          <Str>React</Str>
+          <Pun>, </Pun>
+          <Str>React Native</Str>
+          <Pun>, </Pun>
+          <Str>Node.js</Str>
+          <Pun>, </Pun>
+          <Str>TypeScript</Str>
+          <Pun>],</Pun>
+        </Line>
+        <Line indent={1}>
+          background<Pun>:</Pun> <Str>architecture</Str>
+          <Pun>,</Pun>
+        </Line>
+        <Line indent={1}>
+          poweredBy<Pun>: [</Pun>
+          <Str>coffee</Str>
+          <Pun>, </Pun>
+          <Str>a husky</Str>
+          <Pun>],</Pun>
+        </Line>
+        <Line indent={1}>
+          products<Pun>:</Pun> <Num>{projects.length}</Num>
+          <Pun>,</Pun>
+        </Line>
+        <Line indent={1}>
+          availableForWork<Pun>:</Pun> <Kw>true</Kw>
+          <Pun>,</Pun>
+        </Line>
+        <Line>
+          <Pun>{"};"}</Pun>
+        </Line>
+      </CodeLines>
+      <Blank />
 
-                    <h1 className="tm-text-glow mb-10 text-[2.65rem] leading-[0.9] font-extrabold tracking-[-0.02em] text-[var(--tm-primary)] sm:text-6xl md:mb-14 md:text-8xl lg:text-[10rem]" style={{ fontFamily: 'Manrope, sans-serif' }}>
-                        BUILDING HIGH-PERFORMANCE
-                        <br />
-                        <span className="bg-gradient-to-r from-white via-[#C8C6C5] to-[#474747] bg-clip-text text-transparent">
-                            ARCHITECTURES
-                        </span>
-                    </h1>
+      <Line className="flex flex-wrap gap-3 font-mono text-sm">
+        <Link to="/projects" className="bg-kw px-5 py-2.5 font-semibold text-bg hover:opacity-90">
+          See projects
+        </Link>
+        <Link to="/contact" className="border border-line px-5 py-2.5 text-fg hover:border-kw">
+          Get in touch
+        </Link>
+      </Line>
+      <Blank />
+      <Blank />
 
-                    <p className="mt-3 mb-12 flex flex-wrap justify-center gap-x-5 gap-y-3 font-technical text-[10px] uppercase tracking-[0.16em] text-[var(--tm-on-surface-variant)] sm:text-xs sm:tracking-[0.22em] md:mt-6 md:mb-20 md:text-base md:tracking-[0.34em]">
-                        {tags.map((tag, index) => (
-                            <span key={tag}>
-                                {index > 0 && <span className="mx-2 text-[var(--tm-outline-variant)]">/</span>}
-                                {tag}
-                            </span>
-                        ))}
-                    </p>
-
-                    <div className="flex w-full flex-col items-center gap-4 sm:w-auto sm:gap-6 md:flex-row md:gap-8">
-                        <Link
-                            className="group flex w-full max-w-[21rem] items-center justify-center border border-[var(--tm-primary)] bg-[var(--tm-primary)] px-8 py-4 text-sm font-bold uppercase tracking-[0.16em] text-[var(--tm-on-primary)] transition-all duration-150 hover:bg-[var(--tm-secondary)] sm:w-auto sm:max-w-none md:px-[3.6rem] md:py-[1.6rem] md:tracking-[0.2em]"
-                            style={{ fontFamily: 'Manrope, sans-serif' }}
-                            to="/projects"
-                        >
-                            <span className="flex items-center gap-3">
-                                Explore Systems
-                                <span className="inline-block transition-transform group-hover:translate-x-1">-&gt;</span>
-                            </span>
-                        </Link>
-
-                        <button className="w-full max-w-[21rem] border border-[var(--tm-outline-variant)] px-8 py-4 font-technical text-[11px] uppercase tracking-[0.15em] text-[var(--tm-primary)] transition-colors duration-150 hover:border-[var(--tm-primary)] sm:w-auto sm:max-w-none md:px-[3.6rem] md:py-[1.6rem] md:text-xs md:tracking-[0.22em]">
-                            View Documentation
-                        </button>
-                    </div>
-                </section>
-
-                <div className="pointer-events-none absolute right-8 top-1/2 z-10 hidden -translate-y-1/2 flex-col items-center gap-6 lg:flex xl:right-12">
-                    <span className="font-technical text-[10px] uppercase tracking-[0.3em] text-[var(--tm-on-surface-variant)]">Scroll for Details</span>
-                    <div className="h-24 w-px bg-gradient-to-b from-[var(--tm-primary)] via-[var(--tm-outline-variant)] to-transparent" />
-                </div>
-            </main>
-
-            <section id="projects" className="border-t border-[var(--tm-outline-variant)] bg-[var(--tm-surface-container-lowest)] px-5 py-18 md:px-12 md:py-24">
-                <div className="mx-auto max-w-7xl">
-                    <div className="mb-14 flex flex-col gap-4 border-b border-[var(--tm-outline-variant)] pb-8 md:flex-row md:items-end md:justify-between">
-                        <div>
-                            <h2 className="text-3xl font-bold uppercase tracking-tight text-[var(--tm-primary)] md:text-4xl" style={{ fontFamily: 'Manrope, sans-serif' }}>
-                                Selected Products
-                            </h2>
-                            <p className="mt-2 font-technical text-sm uppercase tracking-[0.2em] text-[var(--tm-on-surface-variant)]">
-                                Live platforms and signature builds
-                            </p>
-                        </div>
-                        <p className="font-technical text-xs uppercase tracking-[0.2em] text-[var(--tm-outline-variant)]">Showing 3 of 10 projects</p>
-                    </div>
-
-                    <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
-                        <a
-                            href="https://yapigon.com"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="group relative block border border-[var(--tm-outline-variant)] bg-[var(--tm-surface)] p-5 transition-colors duration-150 hover:bg-[var(--tm-surface-container-low)] sm:p-6 md:col-span-8 md:p-8"
-                            aria-label="Open Yapigon website"
-                        >
-                            <span className="absolute top-4 right-4 font-technical text-[10px] uppercase tracking-widest text-[var(--tm-outline-variant)] opacity-50">
-                                0x001
-                            </span>
-                            <h3 className="mb-4 text-xl font-bold text-[var(--tm-primary)] sm:text-2xl" style={{ fontFamily: 'Manrope, sans-serif' }}>
-                                Yapigon.com
-                            </h3>
-                            <p className="mb-8 max-w-2xl text-sm leading-relaxed text-[var(--tm-on-surface-variant)]">
-                                A multi-sided construction materials marketplace across web and mobile. Buyers publish demand in minutes, while suppliers compete with offers or list opportunity stock to accelerate sourcing and improve price visibility.
-                            </p>
-
-                            <div className="mb-8 flex flex-wrap gap-2.5 sm:mb-10 sm:gap-3">
-                                {['Google Cloud Platform', 'Spring Boot', 'Next.js', 'Flutter'].map((tech) => (
-                                    <span key={tech} className="bg-[var(--tm-surface-container-highest)] px-3 py-1 font-technical text-[10px] uppercase tracking-wider text-[var(--tm-on-surface)]">
-                                        {tech}
-                                    </span>
-                                ))}
-                            </div>
-
-                            <div className="flex h-40 items-center justify-center overflow-hidden border border-[var(--tm-outline-variant)] bg-[var(--tm-surface-container-lowest)] sm:h-48">
-                                <img
-                                    className="h-[62%] w-auto max-w-[68%] object-contain transition-transform duration-700 group-hover:scale-[1.01]"
-                                    src={yapigonLogo}
-                                    alt="Construction marketplace workflow"
-                                />
-                            </div>
-                        </a>
-
-                        <div className="flex flex-col gap-6 md:col-span-4">
-                            {[
-                                {
-                                    title: 'Club App',
-                                    text: 'End-to-end youth sports club operating system: manager and coach workflows, student-parent communication, training plans, dues and finance tracking, content publishing, and branded club pages in one platform.',
-                                    href: 'http://club-app.com.tr/',
-                                },
-                                {
-                                    title: 'skreentech.com',
-                                    text: 'A modern photobooth ecosystem for events. Teams design rich templates, use AI-powered effects like style transfer and people-swap, then deliver event photos instantly through microsites, email, and WhatsApp.',
-                                },
-                            ].map((item) => (
-                                <article key={item.title} className="group border border-[var(--tm-outline-variant)] bg-[var(--tm-surface)] p-5 transition-colors duration-150 hover:bg-[var(--tm-surface-container-low)] sm:p-6">
-                                    <h4 className="mb-2 text-lg font-bold uppercase text-[var(--tm-primary)]" style={{ fontFamily: 'Manrope, sans-serif' }}>
-                                        {item.title}
-                                    </h4>
-                                    <p className="mb-4 text-xs leading-relaxed text-[var(--tm-on-surface-variant)]">{item.text}</p>
-                                    {item.href ? (
-                                        <a
-                                            href={item.href}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            className="inline-block font-technical text-[10px] uppercase tracking-[0.15em] text-[var(--tm-primary)] transition-transform group-hover:translate-x-1"
-                                        >
-                                            &gt; View Project
-                                        </a>
-                                    ) : (
-                                        <span className="inline-block font-technical text-[10px] uppercase tracking-[0.15em] text-[var(--tm-primary)] transition-transform group-hover:translate-x-1">
-                                            &gt; View Project
-                                        </span>
-                                    )}
-                                </article>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-        </>
-    );
+      <section aria-labelledby="selected-work">
+        <Line as="h2" className="text-xl text-fg sm:text-2xl">
+          <span id="selected-work">
+            <span className="text-faint" aria-hidden="true">
+              //{" "}
+            </span>
+            Selected work
+          </span>
+        </Line>
+        <Blank />
+        <ul>
+          {featured.map((project) => (
+            <li key={project.name} className="mb-6">
+              <Line as="h3" className="text-lg text-fg">
+                {project.href ? (
+                  <a href={project.href} target="_blank" rel="noreferrer" className="hover:text-kw">
+                    {project.name}
+                    <span className="ml-2 text-sm text-faint" aria-hidden="true">
+                      ↗
+                    </span>
+                  </a>
+                ) : (
+                  project.name
+                )}
+              </Line>
+              <Line as="p" className="mt-1 max-w-[38em] text-muted">
+                {project.summary}
+              </Line>
+              <Line className="mt-1 font-mono text-[0.8125rem]">
+                {project.stack.map((item, index) => (
+                  <span key={item}>
+                    {index > 0 ? <Pun>, </Pun> : null}
+                    <Str>{item}</Str>
+                  </span>
+                ))}
+              </Line>
+            </li>
+          ))}
+        </ul>
+        <Line className="font-mono text-sm">
+          <Link to="/projects" className="text-kw underline decoration-1 underline-offset-4 hover:text-fg">
+            All {projects.length} projects in projects.json
+          </Link>
+        </Line>
+      </section>
+    </div>
+  );
 }

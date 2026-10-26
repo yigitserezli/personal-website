@@ -1,89 +1,192 @@
 @import "tailwindcss";
 
-/* Technical Monolith design tokens */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* "Kordon" editor theme: Aegean blue keywords, bougainvillea strings, sunset functions. */
 :root {
-  --tm-primary: #ffffff;
-  --tm-on-primary: #1a1c1c;
-  --tm-secondary: #c8c6c5;
-  --tm-background: #131313;
-  --tm-surface: #131313;
-  --tm-surface-container-lowest: #0e0e0e;
-  --tm-surface-container-low: #1c1b1b;
-  --tm-surface-container: #201f1f;
-  --tm-surface-container-high: #2a2a2a;
-  --tm-surface-container-highest: #353534;
-  --tm-on-surface: #e5e2e1;
-  --tm-on-surface-variant: #c6c6c6;
-  --tm-outline: #919191;
-  --tm-outline-variant: #474747;
-  --tm-motion-fast: 150ms;
+  color-scheme: light;
+  --bg: #fbfcfd;
+  --chrome: #eff3f6;
+  --panel: #e8eef3;
+  --line: #d8e0e7;
+  --fg: #16202a;
+  --muted: #56636f;
+  --faint: #9aa6b1;
+  --kw: #0a6a94;
+  --str: #a8285f;
+  --fn: #875a00;
+  --num: #5b3fc4;
+  --ok: #1d7a4e;
+  --err: #b42318;
+  --status-bg: #0a6a94;
+  --status-fg: #ffffff;
+  --gutter: 4.25rem;
 }
 
-* {
-  box-sizing: border-box;
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #172029;
+  --chrome: #111920;
+  --panel: #1e2a35;
+  --line: #273441;
+  --fg: #d7dee6;
+  --muted: #92a1af;
+  --faint: #536271;
+  --kw: #7cc4e4;
+  --str: #f0a6c4;
+  --fn: #ebc57a;
+  --num: #b9a8f5;
+  --ok: #7fd1a8;
+  --err: #ff9b9b;
+  --status-bg: #7cc4e4;
+  --status-fg: #0c1820;
 }
 
-body {
-  margin: 0;
-  color: var(--tm-on-surface);
-  font-family: 'Inter', sans-serif;
-  background-color: var(--tm-background);
-  background-image:
-    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08) 0%, rgba(19, 19, 19, 1) 70%),
-    radial-gradient(circle at 1px 1px, rgba(71, 71, 71, 0.18) 1px, transparent 0);
-  background-size: 100% 100%, 32px 32px;
-  background-attachment: fixed;
+@theme inline {
+  --color-bg: var(--bg);
+  --color-chrome: var(--chrome);
+  --color-panel: var(--panel);
+  --color-line: var(--line);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-kw: var(--kw);
+  --color-str: var(--str);
+  --color-fn: var(--fn);
+  --color-num: var(--num);
+  --color-ok: var(--ok);
+  --color-err: var(--err);
+  --color-status-bg: var(--status-bg);
+  --color-status-fg: var(--status-fg);
+  --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-  font-family: 'Manrope', sans-serif;
-  letter-spacing: -0.02em;
+@layer base {
+  html {
+    background: var(--chrome);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--chrome);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--kw) 30%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--kw);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
 }
 
-code,
-pre,
-.font-technical {
-  font-family: 'Space Grotesk', monospace;
+/*
+ * Each page reads as one source file. Every `.ln` element is a logical line:
+ * soft-wrapped prose counts once, the way an editor numbers wrapped lines.
+ * Numbers sit in the gutter of the nearest `.doc`, aligned to the line's first row.
+ */
+@property --row {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 1.5rem;
 }
 
-.font-newsreader {
-  font-family: 'Newsreader', serif;
-  font-style: italic;
+.doc {
+  position: relative;
+  counter-reset: ln;
+  padding-left: var(--gutter);
 }
 
-.tm-dot-grid {
-  background-image: radial-gradient(circle, var(--tm-outline-variant) 1px, transparent 1px);
-  background-size: 32px 32px;
+.ln {
+  counter-increment: ln;
+  --row: 1lh;
 }
 
-.tm-radial-monolith {
-  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08) 0%, rgba(19, 19, 19, 1) 70%);
+.ln::before {
+  content: counter(ln) / "";
+  position: absolute;
+  left: 0;
+  width: calc(var(--gutter) - 1.75rem);
+  height: var(--row);
+  line-height: var(--row);
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
 }
 
-.tm-cinematic-vignette {
-  background:
-    radial-gradient(ellipse at center, rgba(19, 19, 19, 0) 28%, rgba(0, 0, 0, 0.38) 78%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.05) 24%, rgba(0, 0, 0, 0.35) 100%);
+.ln.blank {
+  height: 1.65rem;
 }
 
-.tm-text-glow {
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+@media (max-width: 639px) {
+  :root {
+    --gutter: 0rem;
+  }
+
+  .ln::before {
+    display: none;
+  }
+
+  .ln.blank {
+    height: 1rem;
+  }
 }
 
-.tm-blueprint-line-h {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--tm-outline-variant), transparent);
+.caret {
+  display: inline-block;
+  width: max(3px, 0.07em);
+  height: 0.9em;
+  margin-left: 0.1em;
+  translate: 0 0.1em;
+  background: var(--kw);
+  animation: caret-blink 1.1s steps(1) infinite;
 }
 
-.tm-blueprint-line-v {
-  width: 1px;
-  height: 100%;
-  background: linear-gradient(180deg, transparent, var(--tm-outline-variant), transparent);
+@keyframes caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caret {
+    animation: none;
+  }
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+dialog::backdrop {
+  background: rgb(5 10 15 / 0.45);
 }

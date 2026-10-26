@@ -1,4 +1,16 @@
 import { FormEvent, useState } from "react";
+import { Blank, Line } from "../components/Code";
+import { EMAIL, links } from "../content";
+
+const Comment = ({ children }: { children: string }) => (
+  <span className="text-muted">
+    <span aria-hidden="true"># </span>
+    {children}
+  </span>
+);
+
+const fieldClass =
+  "w-full border border-line bg-panel/40 px-3 py-2.5 font-sans text-base text-fg placeholder:text-faint focus:border-kw";
 
 export default function Contact() {
   const [senderName, setSenderName] = useState("");
@@ -37,192 +49,135 @@ export default function Contact() {
       }
 
       if (!response.ok) {
-        throw new Error(parsed.error || "Transmission failed");
+        throw new Error(parsed.error || "The message could not be sent");
       }
 
       setSendState("ok");
-      setSendMessage("Signal transmitted. A confirmation packet has also been sent to your inbox.");
+      setSendMessage("Message sent. A confirmation is on its way to your inbox.");
       setSenderName("");
       setReturnEmail("");
       setMessage("");
     } catch (error) {
       setSendState("error");
-      setSendMessage(error instanceof Error ? error.message : "Transmission failed");
+      const reason = error instanceof Error ? error.message : "The message could not be sent";
+      setSendMessage(`${reason}. Try again, or email ${EMAIL} directly.`);
     } finally {
       setIsSending(false);
     }
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[var(--tm-background)] text-[var(--tm-on-surface)]">
-      <div className="tm-dot-grid absolute inset-0 pointer-events-none opacity-20" />
-      <div className="tm-radial-monolith absolute inset-0 pointer-events-none" />
-      <div className="tm-cinematic-vignette absolute inset-0 pointer-events-none opacity-70" />
-      <div className="pointer-events-none absolute bottom-0 left-7 top-0 hidden w-px bg-[var(--tm-outline-variant)]/35 sm:block md:left-14 xl:left-16" />
-      <div className="pointer-events-none absolute bottom-0 right-7 top-0 hidden w-px bg-[var(--tm-outline-variant)]/35 sm:block md:right-14 xl:right-16" />
-      <div className="pointer-events-none absolute left-0 right-0 top-24 h-px bg-[var(--tm-outline-variant)]/35 md:top-32" />
+    <div className="doc max-w-[52rem]">
+      <Line className="font-mono text-sm text-faint" aria-hidden="true">
+        #!/usr/bin/env bash
+      </Line>
+      <Line as="h1" className="mt-2 text-3xl text-fg sm:text-5xl">
+        Contact
+      </Line>
+      <Line as="p" className="mt-4 max-w-[34em] text-lg text-muted">
+        Tell me about the product you want to build or the problem you are stuck on. I reply within two days.
+      </Line>
+      <Blank />
 
-      <main className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl flex-col justify-center px-5 pt-32 pb-20 md:px-14 md:pt-40 md:pb-24 xl:px-16">
-        <header className="mb-12 border-l border-[var(--tm-outline-variant)] pl-4 md:mb-20 md:pl-8">
-          <p className="font-technical mb-3 text-xs uppercase tracking-[0.2em] text-[var(--tm-primary)] md:mb-4 md:text-sm md:tracking-[0.3em]">System.Communication</p>
-          <h1 className="text-4xl font-extrabold tracking-[-0.02em] text-[var(--tm-primary)] sm:text-5xl md:text-7xl lg:text-8xl" style={{ fontFamily: "Manrope, sans-serif" }}>
-            Init: Contact Flow
-          </h1>
-          <p className="mt-5 max-w-2xl text-base text-[var(--tm-on-surface-variant)] md:mt-6 md:text-lg">
-            Engaging technical protocols for professional collaboration, system integration inquiries, or architectural discourse.
-          </p>
-        </header>
+      <form onSubmit={handleSubmit} className="max-w-[36rem] font-mono text-sm">
+        <Line className="mb-5">
+          <label htmlFor="name" className="mb-1.5 block text-fg">
+            <span className="text-ok" aria-hidden="true">
+              ${" "}
+            </span>
+            name
+          </label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            autoComplete="name"
+            required
+            value={senderName}
+            onChange={(event) => setSenderName(event.target.value)}
+            className={fieldClass}
+          />
+        </Line>
 
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-20">
-          <div className="lg:col-span-7">
-            <form onSubmit={handleSubmit} className="space-y-8 md:space-y-10">
-              <div className="group">
-                <label className="mb-2 block font-technical text-[10px] uppercase tracking-[0.2em] text-[var(--tm-on-surface-variant)] transition-colors group-focus-within:text-[var(--tm-primary)]" htmlFor="name">
-                  01 // SENDER_IDENTITY
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  placeholder="Name"
-                  value={senderName}
-                  onChange={(event) => setSenderName(event.target.value)}
-                  className="w-full border-x-0 border-t-0 border-b border-[var(--tm-outline-variant)] bg-transparent py-3.5 text-lg text-[var(--tm-primary)] placeholder:text-[var(--tm-surface-container-highest)] focus:border-[var(--tm-primary)] focus:ring-0 md:py-4 md:text-xl"
-                  style={{ fontFamily: "Manrope, sans-serif" }}
-                />
-              </div>
+        <Line className="mb-5">
+          <label htmlFor="email" className="mb-1.5 block text-fg">
+            <span className="text-ok" aria-hidden="true">
+              ${" "}
+            </span>
+            email
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            required
+            value={returnEmail}
+            onChange={(event) => setReturnEmail(event.target.value)}
+            className={fieldClass}
+          />
+        </Line>
 
-              <div className="group">
-                <label className="mb-2 block font-technical text-[10px] uppercase tracking-[0.2em] text-[var(--tm-on-surface-variant)] transition-colors group-focus-within:text-[var(--tm-primary)]" htmlFor="email">
-                  02 // RETURN_PATH
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  placeholder="Email Address"
-                  value={returnEmail}
-                  onChange={(event) => setReturnEmail(event.target.value)}
-                  className="w-full border-x-0 border-t-0 border-b border-[var(--tm-outline-variant)] bg-transparent py-3.5 text-lg text-[var(--tm-primary)] placeholder:text-[var(--tm-surface-container-highest)] focus:border-[var(--tm-primary)] focus:ring-0 md:py-4 md:text-xl"
-                  style={{ fontFamily: "Manrope, sans-serif" }}
-                />
-              </div>
+        <Line className="mb-6">
+          <label htmlFor="message" className="mb-1.5 block text-fg">
+            <span className="text-ok" aria-hidden="true">
+              ${" "}
+            </span>
+            message
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            rows={6}
+            required
+            value={message}
+            onChange={(event) => setMessage(event.target.value)}
+            className={`${fieldClass} resize-y`}
+          />
+        </Line>
 
-              <div className="group">
-                <label className="mb-2 block font-technical text-[10px] uppercase tracking-[0.2em] text-[var(--tm-on-surface-variant)] transition-colors group-focus-within:text-[var(--tm-primary)]" htmlFor="message">
-                  03 // DATA_PAYLOAD
-                </label>
-                <textarea
-                  id="message"
-                  placeholder="Message content..."
-                  rows={5}
-                  value={message}
-                  onChange={(event) => setMessage(event.target.value)}
-                  className="w-full resize-none border-x-0 border-t-0 border-b border-[var(--tm-outline-variant)] bg-transparent py-3.5 text-base text-[var(--tm-primary)] placeholder:text-[var(--tm-surface-container-highest)] focus:border-[var(--tm-primary)] focus:ring-0 md:py-4 md:text-lg"
-                />
-              </div>
+        <Line>
+          <button
+            type="submit"
+            disabled={isSending}
+            className="bg-kw px-5 py-2.5 font-semibold text-bg hover:opacity-90 disabled:cursor-wait disabled:opacity-60"
+          >
+            {isSending ? "Sending…" : "Send message"}
+          </button>
+        </Line>
+        <Line as="p" className="mt-3 min-h-[1.65em]" role="status">
+          {sendState === "ok" ? <span className="text-ok">✓ {sendMessage}</span> : null}
+          {sendState === "error" ? <span className="text-err">✗ {sendMessage}</span> : null}
+        </Line>
+      </form>
+      <Blank />
 
-              <div className="pt-4">
-                <button
-                  type="submit"
-                  disabled={isSending}
-                  className="group flex w-full items-center justify-center gap-3 bg-[var(--tm-primary)] px-8 py-4 font-technical text-xs font-bold uppercase tracking-[0.16em] text-[var(--tm-on-primary)] transition-colors duration-150 hover:bg-[var(--tm-secondary)] sm:w-auto sm:px-10 sm:py-5 sm:text-sm sm:tracking-[0.2em]"
+      <section aria-labelledby="direct" className="font-mono text-sm">
+        <Line as="h2" id="direct" className="font-normal tracking-normal">
+          <Comment>Or reach me directly</Comment>
+        </Line>
+        <dl>
+          {links.map((link) => (
+            <Line key={link.label} className="flex gap-3">
+              <dt className="w-[9ch] shrink-0 text-kw">{link.label}</dt>
+              <dd className="min-w-0 truncate">
+                <a
+                  href={link.href}
+                  target={link.label === "email" ? undefined : "_blank"}
+                  rel="noreferrer"
+                  className="text-fg underline decoration-line decoration-1 underline-offset-4 hover:decoration-kw"
                 >
-                  {isSending ? "Transmitting..." : "Transmit Signal"}
-                  <span className="text-base transition-transform group-hover:translate-x-1">-&gt;</span>
-                </button>
-
-                {sendState !== "idle" ? (
-                  <p
-                    className={`mt-4 font-technical text-[11px] uppercase tracking-[0.12em] ${
-                      sendState === "ok" ? "text-[var(--tm-primary)]" : "text-[#ffb4ab]"
-                    }`}
-                  >
-                    {sendMessage}
-                  </p>
-                ) : null}
-              </div>
-            </form>
-          </div>
-
-          <aside className="lg:col-span-5">
-            <div className="space-y-14">
-              <section>
-                <h3 className="mb-6 border-b border-[var(--tm-outline-variant)] pb-2 font-technical text-[10px] uppercase tracking-[0.2em] text-[var(--tm-on-surface-variant)]">
-                  Network Nodes
-                </h3>
-                <div className="space-y-4">
-                  <a
-                    href="https://github.com/yigitserezli"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group flex items-center justify-between py-2 text-[var(--tm-primary)] transition-colors hover:text-[var(--tm-secondary)]"
-                  >
-                    <span className="text-2xl font-bold tracking-tight md:text-3xl" style={{ fontFamily: "Manrope, sans-serif" }}>
-                      GitHub
-                    </span>
-                    <span className="text-[var(--tm-outline-variant)] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-[var(--tm-primary)]">
-                      ↗
-                    </span>
-                  </a>
-
-                  <a
-                    href="https://www.linkedin.com/in/yigit-serezli/"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group flex items-center justify-between py-2 text-[var(--tm-primary)] transition-colors hover:text-[var(--tm-secondary)]"
-                  >
-                    <span className="text-2xl font-bold tracking-tight md:text-3xl" style={{ fontFamily: "Manrope, sans-serif" }}>
-                      LinkedIn
-                    </span>
-                    <span className="text-[var(--tm-outline-variant)] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-[var(--tm-primary)]">
-                      ↗
-                    </span>
-                  </a>
-
-                  <a
-                    href="mailto:devserezli@gmail.com"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group flex items-center justify-between py-2 text-[var(--tm-primary)] transition-colors hover:text-[var(--tm-secondary)]"
-                  >
-                    <span className="text-2xl font-bold tracking-tight md:text-3xl" style={{ fontFamily: "Manrope, sans-serif" }}>
-                      Email
-                    </span>
-                    <span className="text-[var(--tm-outline-variant)] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-[var(--tm-primary)]">
-                      ↗
-                    </span>
-                  </a>
-                </div>
-              </section>
-
-              <section>
-                <h3 className="mb-6 border-b border-[var(--tm-outline-variant)] pb-2 font-technical text-[10px] uppercase tracking-[0.2em] text-[var(--tm-on-surface-variant)]">
-                  Availability
-                </h3>
-                <div className="mb-3 flex items-center gap-3">
-                  <span className="h-2 w-2 animate-pulse bg-[var(--tm-primary)]" />
-                  <span className="font-technical text-xs uppercase tracking-[0.18em] text-[var(--tm-primary)]">Open for consultation</span>
-                </div>
-                <p className="text-sm leading-relaxed text-[var(--tm-on-surface-variant)]">
-                  Currently based in Izmir, Ucyol, Turkey (GMT+3) / 38.4056 N, 27.1246 E. Responding to all verified incoming signals within 24-48 standard operation cycles.
-                </p>
-              </section>
-            </div>
-
-            <div className="mt-10 border border-[var(--tm-outline-variant)] bg-[var(--tm-surface-container-lowest)] p-5 md:mt-12 md:p-6">
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
-                <div>
-                  <p className="mb-1 font-technical text-[9px] uppercase tracking-[0.18em] text-[var(--tm-outline)]">Packet Status</p>
-                  <p className="font-technical text-xs uppercase tracking-[0.14em] text-[var(--tm-primary)]">Ready for transmission</p>
-                </div>
-                <div className="text-left sm:text-right">
-                  <p className="mb-1 font-technical text-[9px] uppercase tracking-[0.18em] text-[var(--tm-outline)]">Encryption</p>
-                  <p className="font-technical text-xs uppercase tracking-[0.14em] text-[var(--tm-primary)]">AES-256 Enabled</p>
-                </div>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </main>
+                  {link.display}
+                </a>
+              </dd>
+            </Line>
+          ))}
+        </dl>
+        <Blank />
+        <Line as="p">
+          <Comment>Based in İzmir, Türkiye (GMT+3).</Comment>
+        </Line>
+      </section>
     </div>
   );
 }

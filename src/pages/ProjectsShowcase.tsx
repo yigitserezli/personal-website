@@ -1,207 +1,138 @@
-import yapigonLogo from "../assets/yapigonlogo.webp";
-import furkanTattooLogo from "../assets/furkantattoo.jpeg";
-import detoxMarinLogo from "../assets/detoxmarin-logo.jpeg";
-import gossipAiLogo from "../assets/gossip-ai.png";
-import homeOsLogo from "../assets/home-os.png";
+import { useState } from "react";
+import { Blank, Cm, Line, Pun, Str } from "../components/Code";
+import { projects, type ProjectStatus } from "../content";
 
-type Project = {
-  name: string;
-  summary: string;
-  stack: string[];
-  href?: string;
-  logo?: string;
-  logoAlt?: string;
-  status?: "live" | "in-development";
-};
+type Filter = "all" | ProjectStatus;
 
-const projects: Project[] = [
-  {
-    name: "Yapigon.com",
-    summary:
-      "Construction materials marketplace where buyers open demand and suppliers respond with offers or opportunity products.",
-    stack: ["Google Cloud Platform", "Spring Boot", "Next.js", "Flutter"],
-    href: "https://yapigon.com",
-    logo: yapigonLogo,
-    logoAlt: "Yapigon logo",
-    status: "live",
-  },
-  {
-    name: "Club App",
-    summary:
-      "Sports club infrastructure management system: coach-manager workflows, student-parent communication, planning and finance modules.",
-    stack: ["Web", "Mobile", "Finance", "CMS"],
-    href: "http://club-app.com.tr/",
-    status: "live",
-  },
-  {
-    name: "skreentech.com",
-    summary:
-      "Photobooth platform for web and mobile with AI-powered creative templates and instant media delivery channels.",
-    stack: ["Photobooth", "AI", "Microsite", "WhatsApp"],
-    status: "live",
-  },
-  {
-    name: "home-os.info",
-    summary:
-      "Unified family operations platform for finance tracking, task planning, reminders, medicine routines and household workflows.",
-    stack: ["Productivity", "Family OS", "In Progress"],
-    href: "https://home-os.info",
-    logo: homeOsLogo,
-    logoAlt: "HomeOS logo",
-    status: "in-development",
-  },
-  {
-    name: "Helpora",
-    summary:
-      "Neighborhood task economy connecting seniors with students and enabling municipalities to launch social responsibility programs.",
-    stack: ["Civic Tech", "Task Marketplace", "In Progress"],
-    status: "in-development",
-  },
-  {
-    name: "Kulce CRM",
-    summary:
-      "Digital operating solution for jewelry commerce with stock visibility, supplier access and neighborhood-scale sales workflows.",
-    stack: ["CRM", "B2B", "In Progress"],
-    status: "in-development",
-  },
-  {
-    name: "detoxmarin.com",
-    summary: "Boat rental platform focused on matching travelers with curated charter experiences.",
-    stack: ["Marketplace", "Travel", "Booking"],
-    href: "https://detoxmarin.com",
-    logo: detoxMarinLogo,
-    logoAlt: "DetoxMarin logo",
-    status: "live",
-  },
-  {
-    name: "Beauty Connect",
-    summary:
-      "A clinic matching platform helping European clients discover the best-fit aesthetic and health providers in Istanbul.",
-    stack: ["Health", "Matching", "International"],
-    status: "live",
-  },
-  {
-    name: "Experr Emlak Degerleme",
-    summary:
-      "Automated valuation engine that scrapes listing platforms and estimates fair property value by location and condition signals.",
-    stack: ["Scraping", "Valuation", "Real Estate"],
-    status: "live",
-  },
-  {
-    name: "furkantattoo.com",
-    summary:
-      "Tattoo artist portfolio and booking platform with an admin panel that manages the full website content lifecycle.",
-    stack: ["Booking", "Admin Panel", "Portfolio"],
-    href: "https://furkantattoo.com",
-    logo: furkanTattooLogo,
-    logoAlt: "Furkan Tattoo logo",
-    status: "live",
-  },
-  {
-    name: "gossip-ai.site",
-    summary:
-      "An AI-powered social content platform for generating trend-aware copy, campaign ideas, and fast creative direction.",
-    stack: ["AI", "Content", "Automation"],
-    href: "https://gossip-ai.site",
-    logo: gossipAiLogo,
-    logoAlt: "Gossip AI logo",
-    status: "live",
-  },
+const filters: { value: Filter; label: string }[] = [
+  { value: "all", label: "all" },
+  { value: "live", label: "live" },
+  { value: "in-progress", label: "in progress" },
 ];
 
+// JSON keys are decoration for sighted readers; the values carry the meaning.
+const Key = ({ children }: { children: string }) => (
+  <span aria-hidden="true" className="inline-block w-[7ch] shrink-0 font-mono text-[0.8125rem] font-normal text-kw">
+    {children}
+  </span>
+);
+
 export default function ProjectsShowcase() {
+  const [filter, setFilter] = useState<Filter>("all");
+  const visible = filter === "all" ? projects : projects.filter((project) => project.status === filter);
+
   return (
-    <div className="min-h-screen bg-[var(--tm-background)] text-[var(--tm-on-surface)]">
-      <main className="relative overflow-hidden px-5 pt-32 pb-20 md:px-14 md:pt-40 md:pb-24 xl:px-16">
-        <div className="tm-dot-grid absolute inset-0 pointer-events-none opacity-20" />
-        <div className="tm-radial-monolith absolute inset-0 pointer-events-none" />
-        <div className="relative z-10 mx-auto max-w-7xl">
-          <header className="mb-12 border-l-2 border-[var(--tm-primary)] pl-4 md:mb-16 md:pl-8">
-            <p className="font-technical text-[10px] uppercase tracking-[0.2em] text-[var(--tm-outline)] md:text-xs md:tracking-[0.28em]">Current Directory: /projects</p>
-            <h1 className="mt-4 text-4xl font-extrabold uppercase tracking-[-0.02em] text-[var(--tm-primary)] sm:text-5xl md:text-7xl" style={{ fontFamily: "Manrope, sans-serif" }}>
-              Engineered Products
-            </h1>
-            <p className="mt-5 max-w-3xl text-sm text-[var(--tm-on-surface-variant)] md:mt-6 md:text-base">
-              A complete index of live products and ongoing systems built across marketplaces, operations software, AI-enabled media workflows, and sector-specific digital platforms.
-            </p>
-          </header>
+    <div className="doc max-w-[52rem]">
+      <Line as="h1" className="text-3xl text-fg sm:text-5xl">
+        Projects
+      </Line>
+      <Line as="p" className="mt-4 max-w-[36em] text-lg text-muted">
+        Products I have built or am building: marketplaces, operations software, AI media tools and platforms for
+        specific trades.
+      </Line>
+      <Blank />
 
-          <section>
-            <div className="mb-8 flex flex-col items-start gap-2 border-b border-[var(--tm-outline-variant)] pb-6 sm:flex-row sm:items-end sm:justify-between">
-              <p className="font-technical text-sm uppercase tracking-[0.24em] text-[var(--tm-on-surface-variant)]">All Projects</p>
-              <p className="font-technical text-xs uppercase tracking-[0.2em] text-[var(--tm-outline)]">Total: {projects.length}</p>
+      <Line className="font-mono text-sm">
+        <fieldset className="flex flex-wrap items-center gap-x-1 gap-y-2">
+          <legend className="sr-only">Filter projects by status</legend>
+          <Cm>
+            <span aria-hidden="true">// filter: </span>
+          </Cm>
+          {filters.map((option) => (
+            <label
+              key={option.value}
+              className={`cursor-pointer border px-2.5 py-0.5 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-kw ${
+                filter === option.value ? "border-kw text-fg" : "border-transparent text-muted hover:text-fg"
+              }`}
+            >
+              <input
+                type="radio"
+                name="status"
+                value={option.value}
+                checked={filter === option.value}
+                onChange={() => setFilter(option.value)}
+                className="sr-only"
+              />
+              {option.label}
+            </label>
+          ))}
+        </fieldset>
+      </Line>
+      <Line className="font-mono text-sm" as="p">
+        <span role="status">
+          <Cm>
+            // {visible.length} of {projects.length} projects
+          </Cm>
+        </span>
+      </Line>
+      <Blank />
+
+      <Line className="font-mono text-sm text-muted" aria-hidden="true">
+        <Pun>[</Pun>
+      </Line>
+      <ul>
+        {visible.map((project, index) => (
+          <li key={project.name} className="mb-2">
+            <Line className="pl-[2ch] font-mono text-sm" aria-hidden="true">
+              <Pun>{"{"}</Pun>
+            </Line>
+            <div className="pl-[4ch] max-sm:pl-0">
+              <Line as="h2" className="flex flex-wrap items-baseline gap-x-3 text-lg text-fg sm:text-xl">
+                <Key>name</Key>
+                {project.href ? (
+                  <a href={project.href} target="_blank" rel="noreferrer" className="hover:text-kw">
+                    {project.name}
+                    <span className="ml-2 text-sm font-normal text-faint" aria-hidden="true">
+                      ↗
+                    </span>
+                  </a>
+                ) : (
+                  <span>{project.name}</span>
+                )}
+              </Line>
+              <Line className="flex items-baseline gap-3 font-mono text-[0.8125rem]">
+                <Key>status</Key>
+                {project.status === "live" ? (
+                  <span className="text-ok">
+                    <span aria-hidden="true">● </span>live
+                  </span>
+                ) : (
+                  <span className="text-fn">
+                    <span aria-hidden="true">◐ </span>in progress
+                  </span>
+                )}
+              </Line>
+              <Line className="flex items-baseline gap-3">
+                <Key>about</Key>
+                <p className="max-w-[36em] text-fg">{project.summary}</p>
+              </Line>
+              <Line className="flex items-baseline gap-3 font-mono text-[0.8125rem]">
+                <Key>stack</Key>
+                <span>
+                  <Pun>[</Pun>
+                  {project.stack.map((item, itemIndex) => (
+                    <span key={item}>
+                      {itemIndex > 0 ? <Pun>, </Pun> : null}
+                      <Str>{item}</Str>
+                    </span>
+                  ))}
+                  <Pun>]</Pun>
+                </span>
+              </Line>
             </div>
-
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {projects.map((project, index) => {
-                const content = (
-                  <article
-                    key={project.name}
-                    className="group flex h-full min-h-[280px] flex-col justify-between border border-[var(--tm-outline-variant)] bg-[var(--tm-surface)] p-5 transition-all duration-150 hover:border-[var(--tm-primary)] hover:bg-[var(--tm-surface-container-low)] sm:min-h-[320px] sm:p-6"
-                  >
-                    <div>
-                      <div className="mb-6 flex items-start justify-between gap-4">
-                        <div className="flex flex-col gap-2">
-                          <span className="font-technical text-[10px] uppercase tracking-[0.2em] text-[var(--tm-outline)]">
-                            Build {String(index + 1).padStart(2, "0")}
-                          </span>
-                          <span
-                            className={`font-technical text-[10px] uppercase tracking-[0.16em] ${
-                              project.status === "in-development" ? "text-[#adabaa]" : "text-[var(--tm-primary)]"
-                            }`}
-                          >
-                            {project.status === "in-development" ? "In Development" : "Live"}
-                          </span>
-                        </div>
-
-                        {project.logo ? (
-                          <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden border border-[var(--tm-outline-variant)] bg-[var(--tm-surface-container-low)] p-1.5">
-                            <img src={project.logo} alt={project.logoAlt ?? `${project.name} logo`} className="h-full w-full object-contain" />
-                          </div>
-                        ) : null}
-                      </div>
-
-                      <h2 className="mb-4 text-xl font-bold tracking-tight text-[var(--tm-primary)] sm:text-2xl" style={{ fontFamily: "Manrope, sans-serif" }}>
-                        {project.name}
-                      </h2>
-
-                      <p className="mb-6 text-sm leading-relaxed text-[var(--tm-on-surface-variant)]">{project.summary}</p>
-
-                      <div className="flex flex-wrap gap-2">
-                        {project.stack.map((item) => (
-                          <span
-                            key={`${project.name}-${item}`}
-                            className="bg-[var(--tm-surface-container-highest)] px-2 py-1 font-technical text-[10px] uppercase tracking-[0.12em] text-[var(--tm-on-surface)]"
-                          >
-                            {item}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="mt-7 flex items-center justify-between sm:mt-8">
-                      <span className="font-technical text-xs uppercase tracking-[0.2em] text-[var(--tm-primary)] transition-transform group-hover:translate-x-1">
-                        {project.href ? "> View Project" : "> Internal Build"}
-                      </span>
-                      <div className="h-px w-14 bg-[var(--tm-outline-variant)] transition-all duration-150 group-hover:w-28 group-hover:bg-[var(--tm-primary)]" />
-                    </div>
-                  </article>
-                );
-
-                if (project.href) {
-                  return (
-                    <a key={project.name} href={project.href} target="_blank" rel="noreferrer" aria-label={`Open ${project.name}`}>
-                      {content}
-                    </a>
-                  );
-                }
-
-                return <div key={project.name}>{content}</div>;
-              })}
-            </div>
-          </section>
-        </div>
-      </main>
+            <Line className="pl-[2ch] font-mono text-sm" aria-hidden="true">
+              <Pun>{index < visible.length - 1 ? "}," : "}"}</Pun>
+            </Line>
+          </li>
+        ))}
+      </ul>
+      <Line className="font-mono text-sm text-muted" aria-hidden="true">
+        <Pun>]</Pun>
+      </Line>
+      <Blank />
+      <Line as="p" className="font-mono text-sm text-muted">
+        <Cm>// Projects without a link are private or run inside a client's own systems.</Cm>
+      </Line>
     </div>
   );
 }

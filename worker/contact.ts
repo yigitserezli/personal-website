@@ -11,7 +11,7 @@ type ResendSendResponse = {
   };
 };
 
-type Env = {
+export type Env = {
   RESEND_API_KEY?: string;
   CONTACT_FROM_EMAIL?: string;
   CONTACT_FROM_NAME?: string;
@@ -187,7 +187,7 @@ function thankYouTextTemplate(payload: { name: string }) {
   ].join("\n");
 }
 
-export const onRequestPost = async (context: { request: Request; env: Env }) => {
+export const handleContact = async (context: { request: Request; env: Env }) => {
   const apiKey = context.env.RESEND_API_KEY;
   if (!apiKey) {
     return jsonResponse(500, { error: "Server is missing RESEND_API_KEY" });

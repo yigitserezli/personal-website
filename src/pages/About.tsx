@@ -1,7 +1,6 @@
-import { Link } from "react-router-dom";
 import myPic from "../assets/my-pic.jpeg";
 import { Blank, Line } from "../components/Code";
-import { education, experience, skills } from "../content";
+import { EMAIL, education, experience, skills } from "../content";
 
 // Markdown syntax stays visible but quiet, like an editor without preview.
 const Mark = ({ children }: { children: string }) => (
@@ -26,8 +25,9 @@ export default function About() {
       <div className="grid gap-x-10 md:grid-cols-[1fr_13rem]">
         <div>
           <Line as="p" className="max-w-[34em] text-lg text-fg">
-            I am a full stack developer with a background in architecture. I studied buildings first, and I still
-            design software the same way: structure first, then the details people touch.
+            I am a co-founder of Otters Studio and a full stack developer with a background in architecture. I
+            studied buildings first, and I still design software the same way: structure first, then the details
+            people touch.
           </Line>
           <Line as="p" className="mt-4 max-w-[34em] text-muted">
             I moved into software by choice and out of curiosity. Most days run on coffee and walks with my husky, and
@@ -82,7 +82,7 @@ export default function About() {
               <Line className="font-mono text-[0.8125rem] text-fn">
                 <time dateTime={item.from}>{formatMonth(item.from)}</time>
                 {" – "}
-                <time dateTime={item.to}>{formatMonth(item.to)}</time>
+                {item.to ? <time dateTime={item.to}>{formatMonth(item.to)}</time> : "present"}
                 <span className="ml-3 text-muted">{item.company}</span>
               </Line>
               <Line as="h3" className="mt-1 text-lg text-fg">
@@ -118,10 +118,10 @@ export default function About() {
       <Blank />
 
       <Line as="p" className="max-w-[36em] text-fg">
-        I take on freelance, consulting and long-term product work.{" "}
-        <Link to="/contact" className="text-kw underline decoration-1 underline-offset-4 hover:text-fg">
-          Send me a message
-        </Link>{" "}
+        Otters Studio is open to new projects.{" "}
+        <a href={`mailto:${EMAIL}`} className="text-kw underline decoration-1 underline-offset-4 hover:text-fg">
+          Email me at {EMAIL}
+        </a>{" "}
         and tell me what you are building.
       </Line>
     </div>

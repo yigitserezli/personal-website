@@ -9,11 +9,17 @@ export type Project = {
   featured?: boolean;
 };
 
+export type PlatformService = {
+  name: string;
+  summary: string;
+  stack: string[];
+};
+
 export type Role = {
   role: string;
   company: string;
   from: string;
-  to: string;
+  to?: string;
   text: string;
 };
 
@@ -25,9 +31,10 @@ export type FileEntry = {
   badgeClass: string;
 };
 
-export const EMAIL = "devserezli@gmail.com";
+export const EMAIL = "yigit@otters.studio";
 
 export const links = [
+  { label: "otters.studio", href: "https://otters.studio", display: "otters.studio" },
   { label: "github", href: "https://github.com/yigitserezli", display: "github.com/yigitserezli" },
   { label: "linkedin", href: "https://www.linkedin.com/in/yigit-serezli/", display: "linkedin.com/in/yigit-serezli" },
   { label: "email", href: `mailto:${EMAIL}`, display: EMAIL },
@@ -43,22 +50,53 @@ export const files: FileEntry[] = [
 
 export const projects: Project[] = [
   {
+    name: "Otters Serve",
+    summary:
+      "Order and check management for restaurants and cafés: QR menus, table orders, kitchen and staff screens that update live across branches.",
+    stack: ["Cloudflare Workers", "D1", "Durable Objects", "Next.js", "Expo"],
+    href: "https://ottersserve.com",
+    status: "live",
+    featured: true,
+  },
+  {
+    name: "E-Kulüp",
+    summary:
+      "An operating system for youth sports clubs: coach and manager workflows, parent communication, training plans, dues, finance and branded club pages.",
+    stack: ["React", "React Native", "Node.js", "PostgreSQL"],
+    href: "https://e-kulup.com",
+    status: "live",
+    featured: true,
+  },
+  {
+    name: "Hous",
+    summary:
+      "A calm control centre for a shared home: shopping lists, a pantry stocked by barcode scan, bills and reports, chores, documents and maintenance.",
+    stack: ["Expo", "Next.js", "Express", "Prisma"],
+    href: "https://joinhous.shop",
+    status: "live",
+    featured: true,
+  },
+  {
+    name: "Derimosa.com",
+    summary: "An online store for genuine leather jackets, coats and accessories, with secure payment and easy returns.",
+    stack: ["E-commerce", "Payments"],
+    href: "https://derimosa.com",
+    status: "live",
+    featured: true,
+  },
+  {
+    name: "E-Tico",
+    summary: "An e-commerce platform.",
+    stack: ["E-commerce"],
+    status: "live",
+  },
+  {
     name: "Yapigon.com",
     summary:
       "A construction materials marketplace on web and mobile. Buyers post what they need in minutes; suppliers answer with offers or list surplus stock.",
     stack: ["Google Cloud", "Spring Boot", "Next.js", "Flutter"],
     href: "https://yapigon.com",
     status: "live",
-    featured: true,
-  },
-  {
-    name: "Club App",
-    summary:
-      "An operating system for youth sports clubs: coach and manager workflows, parent communication, training plans, dues, finance and branded club pages.",
-    stack: ["Web", "Mobile", "Finance", "CMS"],
-    href: "http://club-app.com.tr/",
-    status: "live",
-    featured: true,
   },
   {
     name: "skreentech.com",
@@ -66,22 +104,6 @@ export const projects: Project[] = [
       "A photobooth platform for events, with AI style transfer and face-swap templates and instant delivery over microsites, email and WhatsApp.",
     stack: ["AI", "Microsites", "WhatsApp"],
     status: "live",
-    featured: true,
-  },
-  {
-    name: "home-os.info",
-    summary:
-      "One place for a family's finances, tasks, reminders, medicine routines and household chores.",
-    stack: ["Productivity", "Mobile"],
-    href: "https://home-os.info",
-    status: "in-progress",
-  },
-  {
-    name: "Helpora",
-    summary:
-      "A neighbourhood task economy that pairs seniors with students and lets municipalities run social responsibility programmes.",
-    stack: ["Civic tech", "Marketplace"],
-    status: "in-progress",
   },
   {
     name: "Kulce CRM",
@@ -125,6 +147,30 @@ export const projects: Project[] = [
   },
 ];
 
+// Shared services every Otters Studio product runs on.
+export const platform: PlatformService[] = [
+  {
+    name: "otters-auth",
+    summary: "Accounts and sign-in for every app: email and social login, tenant workspaces, and web and mobile integration guides.",
+    stack: ["Express", "Prisma", "PostgreSQL", "OAuth"],
+  },
+  {
+    name: "otters-dispatch",
+    summary: "One API for in-app notifications, web push, mobile push over FCM, transactional email and SMS.",
+    stack: ["Express", "Prisma", "Web Push", "FCM"],
+  },
+  {
+    name: "otters-console",
+    summary: "The admin hub where the team manages auth, notifications, mail and customer relationships for each product.",
+    stack: ["Next.js", "Express", "React Query"],
+  },
+  {
+    name: "depot",
+    summary: "The infrastructure view inside Console: R2 file storage, Workers and their errors, D1 databases and domains.",
+    stack: ["Cloudflare R2", "Workers", "D1"],
+  },
+];
+
 export const skills = [
   {
     name: "React",
@@ -145,10 +191,16 @@ export const skills = [
 
 export const experience: Role[] = [
   {
+    role: "Co-founder",
+    company: "Otters Studio",
+    from: "2026-06",
+    text: "Co-founded Otters Studio in June 2026. We build products such as Otters Serve, E-Kulüp and Hous, and the shared platform behind them: auth, notifications and infrastructure.",
+  },
+  {
     role: "Full Stack Developer",
     company: "WeStudio",
     from: "2025-04",
-    to: "2026-02",
+    to: "2026-05",
     text: "Built web and mobile applications end to end and helped plan and run client projects.",
   },
   {

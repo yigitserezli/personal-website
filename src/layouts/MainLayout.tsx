@@ -187,7 +187,7 @@ export default function MainLayout() {
             <span aria-hidden="true">⎇ </span>main
           </span>
           <Link to="/contact" className="hover:underline">
-            <span aria-hidden="true">● </span>Available for work
+            <span aria-hidden="true">● </span>Open for new projects
           </Link>
         </div>
         <div className="flex items-center gap-4">

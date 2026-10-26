@@ -16,11 +16,5 @@
   ],
   "observability": {
     "enabled": true
-  },
-  "vars": {
-    "CONTACT_FROM_EMAIL": "noreply@yigitserezli.tr",
-    "CONTACT_FROM_NAME": "Yiğit Serezli",
-    "CONTACT_TO_EMAIL": "devserezli@gmail.com"
   }
-  // RESEND_API_KEY is a secret: npx wrangler secret put RESEND_API_KEY
 }

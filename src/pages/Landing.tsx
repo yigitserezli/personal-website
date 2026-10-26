@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Blank, CodeLines, Cm, Fn, Kw, Line, Num, Pun, Str } from "../components/Code";
-import { projects } from "../content";
+import { platform, projects } from "../content";
 
 const featured = projects.filter((project) => project.featured);
 
@@ -8,15 +8,15 @@ export default function Landing() {
   return (
     <div className="doc max-w-[52rem]">
       <Line className="font-mono text-sm text-muted">
-        <Cm>/** Full stack developer based in İzmir, Türkiye. */</Cm>
+        <Cm>/** Co-founder of Otters Studio. Full stack developer in İzmir, Türkiye. */</Cm>
       </Line>
       <Line as="h1" className="mt-3 text-[2.5rem] text-fg sm:text-6xl lg:text-7xl">
         Yiğit Serezli
         <span className="caret" aria-hidden="true" />
       </Line>
       <Line as="p" className="mt-5 max-w-[34em] text-lg text-muted sm:text-xl">
-        I build web and mobile products end to end: the API, the database, the app in your hand, and the small details
-        that make it feel finished.
+        I co-founded Otters Studio, where we build web and mobile products end to end: the API, the database, the app in
+        your hand, and the small details that make it feel finished.
       </Line>
       <Blank />
 
@@ -25,7 +25,11 @@ export default function Landing() {
           <Kw>export const</Kw> <Fn>yigit</Fn> <Pun>=</Pun> <Pun>{"{"}</Pun>
         </Line>
         <Line indent={1}>
-          role<Pun>:</Pun> <Str>Full stack developer</Str>
+          role<Pun>:</Pun> <Str>Co-founder</Str>
+          <Pun>,</Pun>
+        </Line>
+        <Line indent={1}>
+          company<Pun>:</Pun> <Str>Otters Studio</Str>
           <Pun>,</Pun>
         </Line>
         <Line indent={1}>
@@ -59,7 +63,7 @@ export default function Landing() {
           <Pun>,</Pun>
         </Line>
         <Line indent={1}>
-          availableForWork<Pun>:</Pun> <Kw>true</Kw>
+          openToNewProjects<Pun>:</Pun> <Kw>true</Kw>
           <Pun>,</Pun>
         </Line>
         <Line>
@@ -123,6 +127,47 @@ export default function Landing() {
             All {projects.length} projects in projects.json
           </Link>
         </Line>
+      </section>
+      <Blank />
+      <Blank />
+
+      <section aria-labelledby="platform">
+        <Line as="h2" className="text-xl text-fg sm:text-2xl">
+          <span id="platform">
+            <span className="text-faint" aria-hidden="true">
+              //{" "}
+            </span>
+            The Otters Studio platform
+          </span>
+        </Line>
+        <Line as="p" className="mt-2 max-w-[38em] text-muted">
+          The shared services every Otters Studio product runs on. They are internal, so there is nothing public to link
+          to.
+        </Line>
+        <Blank />
+        <ul>
+          {platform.map((service) => (
+            <li key={service.name} className="mb-6">
+              <Line as="h3" className="text-lg text-fg">
+                <span className="font-normal text-kw" aria-hidden="true">
+                  import{" "}
+                </span>
+                {service.name}
+              </Line>
+              <Line as="p" className="mt-1 max-w-[38em] text-muted">
+                {service.summary}
+              </Line>
+              <Line className="mt-1 font-mono text-[0.8125rem]">
+                {service.stack.map((item, index) => (
+                  <span key={item}>
+                    {index > 0 ? <Pun>, </Pun> : null}
+                    <Str>{item}</Str>
+                  </span>
+                ))}
+              </Line>
+            </li>
+          ))}
+        </ul>
       </section>
     </div>
   );

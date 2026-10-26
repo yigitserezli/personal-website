@@ -54,7 +54,7 @@ export default function About() {
           <Mark>##</Mark>What I work with
         </Line>
         <Line as="p" className="mt-2 max-w-[38em] text-muted">
-          Everything here is in use in my current projects, grouped by where it sits in a product.
+          The tools I build with, grouped by where they sit in a product.
         </Line>
         <Blank />
         <Line className="font-mono text-sm text-faint" aria-hidden="true">

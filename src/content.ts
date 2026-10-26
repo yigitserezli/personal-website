@@ -177,7 +177,7 @@ export const platform: PlatformService[] = [
   },
 ];
 
-// Grouped by where each tool sits in a product; every item is used in a current project.
+// Grouped by where each tool sits in a product.
 export const stackGroups: StackGroup[] = [
   {
     key: "frontend",
@@ -187,12 +187,12 @@ export const stackGroups: StackGroup[] = [
   {
     key: "mobile",
     note: "Cross-platform apps through to the stores, with push, subscriptions and crash reports",
-    items: ["React Native", "Expo", "Firebase Cloud Messaging", "RevenueCat", "Sentry"],
+    items: ["React Native", "Expo", "Flutter", "Firebase Cloud Messaging", "RevenueCat", "Sentry"],
   },
   {
     key: "backend",
     note: "API-first services, realtime and validation at the edges",
-    items: ["Node.js", "Express", "Hono", "Fastify", "Socket.io", "Zod"],
+    items: ["Node.js", "Express", "Hono", "Fastify", "Socket.io", "Zod", "ASP.NET", "Spring Boot"],
   },
   {
     key: "data",

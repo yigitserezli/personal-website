@@ -45,6 +45,8 @@ export default function Landing() {
           <Str>Node.js</Str>
           <Pun>, </Pun>
           <Str>TypeScript</Str>
+          <Pun>, </Pun>
+          <Str>Cloudflare</Str>
           <Pun>],</Pun>
         </Line>
         <Line indent={1}>

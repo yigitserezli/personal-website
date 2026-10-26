@@ -1,6 +1,6 @@
 import myPic from "../assets/my-pic.jpeg";
-import { Blank, Line } from "../components/Code";
-import { EMAIL, education, experience, skills } from "../content";
+import { Blank, Fn, Kw, Line, Pun } from "../components/Code";
+import { EMAIL, education, experience, stackGroups } from "../content";
 
 // Markdown syntax stays visible but quiet, like an editor without preview.
 const Mark = ({ children }: { children: string }) => (
@@ -53,21 +53,56 @@ export default function About() {
         <Line as="h2" id="stack" className="text-xl text-fg sm:text-2xl">
           <Mark>##</Mark>What I work with
         </Line>
+        <Line as="p" className="mt-2 max-w-[38em] text-muted">
+          Everything here is in use in my current projects, grouped by where it sits in a product.
+        </Line>
         <Blank />
-        <ul>
-          {skills.map((skill) => (
-            <Line as="li" key={skill.name} className="mb-3 max-w-[38em]">
-              <span className="text-faint" aria-hidden="true">
-                -{" "}
-              </span>
-              <strong className="font-mono font-semibold text-fg">{skill.name}</strong>
-              <span className="text-muted">: {skill.text} </span>
-              <span className="font-mono text-[0.8125rem] whitespace-nowrap text-str">
-                {skill.tags.map((tag) => `\`${tag}\``).join(" ")}
-              </span>
-            </Line>
+        <Line className="font-mono text-sm text-faint" aria-hidden="true">
+          ```ts
+        </Line>
+        <div
+          role="group"
+          aria-label="Tech stack"
+          className="border-l-2 border-line bg-panel/40 py-1 pl-3 font-mono text-[0.8125rem] leading-[1.75] sm:pl-4 sm:text-[0.875rem]"
+        >
+          <Line aria-hidden="true">
+            <Kw>export const</Kw> <Fn>stack</Fn> <Pun>= {"{"}</Pun>
+          </Line>
+          {stackGroups.map((group, index) => (
+            <div key={group.key} className={index > 0 ? "mt-3" : ""}>
+              <Line indent={1} className="text-muted">
+                <span aria-hidden="true">// </span>
+                {group.note}
+              </Line>
+              <Line indent={1}>
+                <span className="font-semibold text-fg">{group.key}</span>
+                <Pun>: </Pun>
+                <span aria-hidden="true" className="text-muted">
+                  [
+                </span>
+                {group.items.map((item, itemIndex) => (
+                  <span key={item}>
+                    {itemIndex > 0 ? <Pun>, </Pun> : null}
+                    <span className="whitespace-nowrap text-str">
+                      <span aria-hidden="true">"</span>
+                      {item}
+                      <span aria-hidden="true">"</span>
+                    </span>
+                  </span>
+                ))}
+                <span aria-hidden="true" className="text-muted">
+                  ],
+                </span>
+              </Line>
+            </div>
           ))}
-        </ul>
+          <Line aria-hidden="true">
+            <Pun>{"};"}</Pun>
+          </Line>
+        </div>
+        <Line className="font-mono text-sm text-faint" aria-hidden="true">
+          ```
+        </Line>
       </section>
       <Blank />
 

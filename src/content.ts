@@ -15,6 +15,12 @@ export type PlatformService = {
   stack: string[];
 };
 
+export type StackGroup = {
+  key: string;
+  note: string;
+  items: string[];
+};
+
 export type Role = {
   role: string;
   company: string;
@@ -171,21 +177,52 @@ export const platform: PlatformService[] = [
   },
 ];
 
-export const skills = [
+// Grouped by where each tool sits in a product; every item is used in a current project.
+export const stackGroups: StackGroup[] = [
   {
-    name: "React",
-    text: "Component-driven single-page apps with a lot of state and interaction.",
-    tags: ["Hooks", "Redux", "Next.js"],
+    key: "frontend",
+    note: "Web apps and dashboards with a lot of state",
+    items: ["React", "Next.js", "TypeScript", "Vite", "Tailwind CSS", "TanStack Query", "Zustand", "Redux Toolkit"],
   },
   {
-    name: "React Native",
-    text: "Cross-platform mobile apps with native modules and production release pipelines.",
-    tags: ["Expo", "Native modules", "Performance"],
+    key: "mobile",
+    note: "Cross-platform apps through to the stores, with push, subscriptions and crash reports",
+    items: ["React Native", "Expo", "Firebase Cloud Messaging", "RevenueCat", "Sentry"],
   },
   {
-    name: "Node.js",
-    text: "API-first backends, real-time communication and high-concurrency services.",
-    tags: ["Express", "Socket.io", "PostgreSQL"],
+    key: "backend",
+    note: "API-first services, realtime and validation at the edges",
+    items: ["Node.js", "Express", "Hono", "Fastify", "Socket.io", "Zod"],
+  },
+  {
+    key: "data",
+    note: "Relational first, with a cache where it pays off",
+    items: ["PostgreSQL", "SQLite", "Prisma", "Drizzle", "Redis"],
+  },
+  {
+    key: "cloudflare",
+    note: "APIs on Workers, SQLite on D1, files on R2, live state in Durable Objects, Next.js through OpenNext",
+    items: ["Workers", "D1", "R2", "Durable Objects", "Cron Triggers", "Static Assets", "OpenNext", "DNS"],
+  },
+  {
+    key: "ai",
+    note: "LLM features inside products: agents, structured generation, live voice and text to speech",
+    items: ["OpenAI", "OpenAI Agents SDK", "Anthropic Claude", "Google Gemini", "Gemini Live"],
+  },
+  {
+    key: "infra",
+    note: "Self-hosted services on a VPS behind WireGuard, shipped from CI",
+    items: ["Docker", "GitHub Actions", "Ubuntu", "WireGuard", "S3-compatible storage"],
+  },
+  {
+    key: "integrations",
+    note: "Email, notifications and payments",
+    items: ["Resend", "Web Push", "iyzico", "Open Food Facts"],
+  },
+  {
+    key: "testing",
+    note: "Unit, integration and end-to-end",
+    items: ["Vitest", "Jest", "Playwright"],
   },
 ];
 
